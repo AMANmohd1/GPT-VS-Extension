@@ -21,19 +21,27 @@ namespace SGToolWindow
         public ToolWindow1Control()
         {
             this.InitializeComponent();
+            AddMessage("SGCopilot", "Welcome to Our Company! Here are some important links: \n" +
+                "https://en.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_G%C3%A9n%C3%A9rale \n" +
+                "https://www.societegenerale.com/en", false);
+
         }
 
         private async void SendMessage_Click(object sender, RoutedEventArgs e)
         {
             string userMessage = UserInput.Text;
 
-            AddMessage("User", userMessage);
+            AddMessage("User", userMessage, true);
+
+            LoadingIndicator.Visibility = Visibility.Visible;
 
             // Call your API to get the chatbot response
             string chatbotResponse = await GetChatbotResponse(userMessage);
 
+            LoadingIndicator.Visibility = Visibility.Collapsed;
+
             // Display the chatbot response in the ChatHistory TextBlock
-            AddMessage("Chatbot", chatbotResponse);
+            AddMessage("Chatbot", chatbotResponse, false);
 
             //Placeholder chatbot response for test
             //string chatbotResponse = "Placeholder GPT response";
@@ -43,7 +51,7 @@ namespace SGToolWindow
             UserInput.Clear();
         }
 
-        private void AddMessage(string sender, string message)
+        private void AddMessage(string sender, string message, bool alignRight)
         {
             // Create a new Border to act as the chat bubble.
             Border chatBubble = new Border();
@@ -55,13 +63,23 @@ namespace SGToolWindow
             chatBubble.Margin = new Thickness(5, 5, 5, 0); // Add margin for spacing.
 
             TextBox messageBlock = new TextBox();
-            messageBlock.Text = $"{sender}: {message}";
+            messageBlock.Text = message;
             messageBlock.IsReadOnly = true;
             messageBlock.TextWrapping = TextWrapping.Wrap;
             messageBlock.Background = Brushes.Transparent;
             messageBlock.BorderThickness = new Thickness(0);
 
             chatBubble.Child = messageBlock;
+
+            if (alignRight)
+            {
+                chatBubble.HorizontalAlignment = HorizontalAlignment.Right;
+            }
+            else
+            {
+                chatBubble.HorizontalAlignment = HorizontalAlignment.Left;
+            }
+
 
             // Add the TextBlock to the chat history.
             ChatHistory.Children.Add(chatBubble);

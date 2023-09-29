@@ -59,11 +59,12 @@
 
         <ScrollViewer Name="ChatHistoryScrollViewer" Margin="0,79,0,116">
             <StackPanel Name="ChatHistory" VerticalAlignment="Top" Margin="10" >
-                <TextBox Text="Welcome to Our Company! Here are some important links:" IsReadOnly="True"/>
-                <TextBlock Name="messageBlock" Text="Dynamic Message" TextWrapping="Wrap"/> 
+                <!-- <TextBox Text="Welcome to Our Company! Here are some important links:" IsReadOnly="True"/> -->
             </StackPanel>
         </ScrollViewer>
-   
+
+        <ProgressBar Name="LoadingIndicator" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,150,0,0"/>
+
         <!-- User Input (Rounded TextBox) -->
         <TextBox Name="UserInput" VerticalAlignment="Bottom" Margin="10" Width="600" TextChanged="UserInput_TextChanged" Style="{StaticResource RoundedTextBoxStyle}"/>
 
