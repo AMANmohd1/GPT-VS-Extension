@@ -48,16 +48,20 @@
 
     <Grid>
         <!-- Welcome Message TextBox -->
-        <TextBox Text="Welcome to Our Company! Here are some important links:" IsReadOnly="True" VerticalAlignment="Top" Margin="10,213,10,0" TextWrapping="Wrap" Background="Transparent" BorderThickness="0"/>
-
+        <!-- <TextBox Text="Welcome to Our Company! Here are some important links:" IsReadOnly="True" VerticalAlignment="Top" Margin="10,213,10,0" TextWrapping="Wrap" Background="Transparent" BorderThickness="0"/> -->
+        
+        
         <!-- Company Logo -->
         <Image Source="https://www.societegenerale.com/sites/default/files/logo-societe-generale.png" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,-56,0,0" Width="164"/>
 
         <!-- Chat History -->
         <!--<TextBlock Name="ChatHistory" VerticalAlignment="Top" Margin="10,171,10,0" TextWrapping="Wrap"/>-->
 
-        <ScrollViewer Name="ChatHistoryScrollViewer">
-            <StackPanel Name="ChatHistory" VerticalAlignment="Top" Margin="10" />
+        <ScrollViewer Name="ChatHistoryScrollViewer" Margin="0,79,0,116">
+            <StackPanel Name="ChatHistory" VerticalAlignment="Top" Margin="10" >
+                <TextBox Text="Welcome to Our Company! Here are some important links:" IsReadOnly="True"/>
+                <TextBlock Name="messageBlock" Text="Dynamic Message" TextWrapping="Wrap"/> 
+            </StackPanel>
         </ScrollViewer>
    
         <!-- User Input (Rounded TextBox) -->

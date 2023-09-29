@@ -1,0 +1,11 @@
+commit d694e0b47563fa0cbc844824e88021c26e3f4a34
+Author: kamal <kamal@LAPTOP-SU6PS2RI>
+Date:   Tue Sep 26 16:37:54 2023 +0530
+
+    Add project files.
+
+commit 869f10d27712d3bf508b71d673abb3d3a3d71174
+Author: kamal <kamal@LAPTOP-SU6PS2RI>
+Date:   Tue Sep 26 16:37:51 2023 +0530
+
+    Add .gitattributes and .gitignore.

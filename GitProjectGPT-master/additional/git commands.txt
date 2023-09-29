@@ -1,0 +1,7 @@
+sample project taken : https://github.com/lambdageek/monovm-embed-sample
+
+https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+
+git log --stat --before="2023-09-26" > logfile.txt
+
+git log --stat --since="2020-12-30" > logfile.txt

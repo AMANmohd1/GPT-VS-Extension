@@ -1,0 +1,359 @@
+commit c35f945509b0d1e4f4412a7076c9e769708c3ff1
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed May 31 12:39:20 2023 -0400
+
+    update for net8.0; detect osx-arm64
+    
+    - Explicitly build everything in Release configuration
+    
+    - Configure the trimmer for the sample to use library mode (keeps all
+    public APIs)
+    
+    - Add a trimmer root descriptor for the private method that is invoked
+      from C
+    
+    - Try to detect the processor architecture of the host (works on Mac;
+    might need to be tweaked for Linux)
+
+ Makefile                                 |  8 ++++----
+ os-detect.mk                             | 10 ++++++++++
+ src/CsharpSample/CsharpSample.csproj     | 12 +++++++++++-
+ src/CsharpSample/MyRoots.xml             |  7 +++++++
+ src/GetRuntimePack/GetRuntimePack.csproj |  3 +--
+ src/native/Makefile                      |  4 ++--
+ 6 files changed, 35 insertions(+), 9 deletions(-)
+
+commit cc4113ff9458721beffcea6db694844eebd0ba2b
+Author: Aleksey Kliger <aleksey@lambdageek.org>
+Date:   Fri Dec 17 10:36:46 2021 -0500
+
+    Add Linux VS Code C/C++ config
+
+ .vscode/c_cpp_properties.json | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+
+commit 20714040e3078719b737caab65178f8c2f1cb3c9
+Author: Aleksey Kliger <aleksey@lambdageek.org>
+Date:   Fri Dec 17 09:34:16 2021 -0500
+
+    Fixup Linux build; typos; gcc support
+
+ README.md           | 2 +-
+ src/native/Makefile | 4 ++--
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+commit 9d83523ea2fb73d84e6a4392622e9027b55fbb2e
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 12:35:50 2021 -0500
+
+    fix typo
+
+ DETAILS.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit bec3cf1a5a3afaafeaa4e290860c4f81707a4293
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 12:34:59 2021 -0500
+
+    Add a DETAILS file with the implementation details
+
+ DETAILS.md | 37 +++++++++++++++++++++++++++++++++++++
+ README.md  |  4 ++++
+ 2 files changed, 41 insertions(+)
+
+commit ce51e03622037cda3cd2463b9e4d099243c09b06
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 12:05:51 2021 -0500
+
+    Use mono_assembly_load_full in the sample
+    
+    instead of mono_assembly_open which is not the right way
+    to probe for assemblies
+
+ src/CsharpSample/CsharpSample.csproj |  4 ++++
+ src/native/main.c                    | 38 ++++++++++++++++++++++--------------
+ 2 files changed, 27 insertions(+), 15 deletions(-)
+
+commit 4ed5dd5da7ce71028e9161e4ede652d1c140fa69
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 12:03:17 2021 -0500
+
+    Add VS Code C++ config file
+
+ .vscode/c_cpp_properties.json | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+commit 0664eff18c907bddb6cac6ade97b23f21a7bed6c
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 11:08:45 2021 -0500
+
+    Clarify platforms; cosmetic fixes
+
+ README.md | 25 +++++++++++++------------
+ 1 file changed, 13 insertions(+), 12 deletions(-)
+
+commit 7c59497ac3dd595f54d9c3bd7b4b2e2d5c6d9bfb
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Wed Dec 15 11:04:10 2021 -0500
+
+    Update README: Sample works with released .NET 6 SDKs
+
+ README.md | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
+
+commit 8bbb296b0ec74f9c09897781b93e7f1812385d34
+Author: Aleksey Kliger <aleksey@lambdageek.org>
+Date:   Thu Aug 12 22:00:20 2021 -0400
+
+    update README for .NET 6 Preview 7
+
+ README.md | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+commit 8db832fde6c443c83c6b7730435f81b8f079ec6c
+Author: Aleksey Kliger <aleksey@lambdageek.org>
+Date:   Thu Aug 12 21:58:02 2021 -0400
+
+    Update for .NET 6 Preview 7
+    
+    It's much easier to find the mono runtime pack now.
+    Just need to set UseMonoRuntime to true and RuntimeIdentifier to the
+    target platform RID.
+
+ Makefile                                 |  2 +-
+ src/GetRuntimePack/GetRuntimePack.csproj | 47 +++++++-------------------------
+ 2 files changed, 11 insertions(+), 38 deletions(-)
+
+commit 48f8d969779b3217f1e1c1aacc963a330b7e9e65
+Author: Aleksey Kliger (λgeek) <alklig@microsoft.com>
+Date:   Mon Mar 15 14:19:20 2021 -0400
+
+    Port to Linux
+    
+    Requires clang.
+    
+    Requires `patchelf` to fixup the SONAME for "libcoreclr.so" (nee "libmonosgen-2.0.so")
+
+ Makefile            | 22 ++++++++++++++--------
+ README.md           |  8 +++++---
+ os-detect.mk        | 16 ++++++++++++++++
+ src/native/Makefile | 21 +++++++++++++++------
+ 4 files changed, 50 insertions(+), 17 deletions(-)
+
+commit c1f2e6d8c85857eb7f6004250f679961dc3a7fa3
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Fri Mar 12 13:39:22 2021 -0500
+
+    Add support for using a local build of the runtime
+
+ Makefile  | 11 +++++++++++
+ README.md | 50 ++++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 61 insertions(+)
+
+commit 834fb1a96d998cdde7c47858fda4cf2cf30902f8
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Fri Mar 12 13:03:52 2021 -0500
+
+    Update for .NET 6 Preview 2
+    
+    Clean up a little bit to make it easier to use other target frameworks or RIDs
+
+ Makefile                                 | 15 ++++++++++++---
+ README.md                                |  4 ++--
+ src/CsharpSample/CsharpSample.csproj     |  2 +-
+ src/GetRuntimePack/GetRuntimePack.csproj |  2 +-
+ src/native/Makefile                      |  6 +++---
+ src/native/gen-managed.sh                |  5 +++++
+ 6 files changed, 24 insertions(+), 10 deletions(-)
+
+commit 0de6450c2893120d516e7b67907b802a6ee8e865
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Fri Mar 12 11:21:21 2021 -0500
+
+    CSharpSample: print framework version
+
+ src/CsharpSample/CSharpSample.cs | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 50871c18d70a63f6d356c95adff487ac387c1aa6
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Fri Mar 12 11:20:44 2021 -0500
+
+    fixup GetRuntimePack
+    
+    error message, comment and support for $(RuntimeSuffix)
+
+ src/GetRuntimePack/GetRuntimePack.csproj | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 41b06385f80e54a3b24af9c4ad4c79cc24dff3e9
+Author: Aleksey Kliger (λgeek) <alklig@microsoft.com>
+Date:   Wed Feb 17 21:54:27 2021 -0500
+
+    Update README.md
+
+ README.md | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+commit 708465d265ba6ca2fb35348bba0c2b8b4415a405
+Author: Aleksey Kliger (λgeek) <alklig@microsoft.com>
+Date:   Tue Dec 29 21:59:57 2020 -0500
+
+    Comments in GetRuntimePack.csproj
+
+ src/GetRuntimePack/GetRuntimePack.csproj | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 5d443fa95f467adbe1a6b85831f2c0a8b2045a75
+Author: Aleksey Kliger (λgeek) <alklig@microsoft.com>
+Date:   Tue Dec 29 21:50:54 2020 -0500
+
+    Link to Mono runtime pack include/ issue
+
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 255cc886265d8de3159417a4dafb8b3769e5028f
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 20:30:43 2020 -0500
+
+    fixup gen-managed.sh
+
+ src/native/gen-managed.sh | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+commit 6f4dd63be7ae06d409b0dcca0bcea4872b3f8b7b
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 20:26:41 2020 -0500
+
+    Update README
+
+ README.md | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+commit c1eb2fc3632c56d03f8bc779977dd00e81a4c52b
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 20:23:35 2020 -0500
+
+    Run the managed method from the native sample
+
+ src/CsharpSample/CSharpSample.cs |  2 +-
+ src/native/Makefile              |  4 ++-
+ src/native/main.c                | 65 +++++++++++++++++++++++++++++++++++-----
+ 3 files changed, 61 insertions(+), 10 deletions(-)
+
+commit ad5072247c957e02a29ebe508e5cd48107c2791d
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 20:01:23 2020 -0500
+
+    Add vendored mono headers
+
+ vendor/mono-headers/include/README.txt             |   4 +
+ .../mono-headers/include/mono-2.0/mono/jit/jit.h   | 120 +++++
+ .../mono-2.0/mono/jit/mono-private-unstable.h      |  39 ++
+ .../include/mono-2.0/mono/metadata/appdomain.h     | 234 ++++++++++
+ .../include/mono-2.0/mono/metadata/assembly.h      | 136 ++++++
+ .../include/mono-2.0/mono/metadata/attrdefs.h      | 274 +++++++++++
+ .../include/mono-2.0/mono/metadata/blob.h          | 118 +++++
+ .../include/mono-2.0/mono/metadata/class.h         | 313 +++++++++++++
+ .../include/mono-2.0/mono/metadata/debug-helpers.h |  54 +++
+ .../mono-2.0/mono/metadata/debug-mono-symfile.h    | 114 +++++
+ .../include/mono-2.0/mono/metadata/environment.h   |  23 +
+ .../include/mono-2.0/mono/metadata/exception.h     | 177 +++++++
+ .../include/mono-2.0/mono/metadata/image.h         |  99 ++++
+ .../include/mono-2.0/mono/metadata/loader.h        | 109 +++++
+ .../include/mono-2.0/mono/metadata/metadata.h      | 517 +++++++++++++++++++++
+ .../include/mono-2.0/mono/metadata/mono-config.h   |  38 ++
+ .../include/mono-2.0/mono/metadata/mono-debug.h    | 231 +++++++++
+ .../include/mono-2.0/mono/metadata/mono-gc.h       | 132 ++++++
+ .../mono-2.0/mono/metadata/mono-private-unstable.h |  30 ++
+ .../mono-2.0/mono/metadata/object-forward.h        |  22 +
+ .../include/mono-2.0/mono/metadata/object.h        | 408 ++++++++++++++++
+ .../include/mono-2.0/mono/metadata/opcodes.h       |  83 ++++
+ .../mono-2.0/mono/metadata/profiler-events.h       | 108 +++++
+ .../include/mono-2.0/mono/metadata/profiler.h      | 248 ++++++++++
+ .../include/mono-2.0/mono/metadata/reflection.h    | 174 +++++++
+ .../include/mono-2.0/mono/metadata/row-indexes.h   | 503 ++++++++++++++++++++
+ .../include/mono-2.0/mono/metadata/sgen-bridge.h   | 110 +++++
+ .../include/mono-2.0/mono/metadata/threads.h       |  67 +++
+ .../include/mono-2.0/mono/metadata/tokentype.h     |  45 ++
+ .../include/mono-2.0/mono/metadata/verify.h        |  66 +++
+ .../include/mono-2.0/mono/utils/mono-counters.h    | 105 +++++
+ .../include/mono-2.0/mono/utils/mono-dl-fallback.h |  43 ++
+ .../include/mono-2.0/mono/utils/mono-error.h       | 105 +++++
+ .../include/mono-2.0/mono/utils/mono-forward.h     |  15 +
+ .../include/mono-2.0/mono/utils/mono-jemalloc.h    |  36 ++
+ .../include/mono-2.0/mono/utils/mono-logger.h      |  31 ++
+ .../mono-2.0/mono/utils/mono-private-unstable.h    |  19 +
+ .../include/mono-2.0/mono/utils/mono-publib.h      | 187 ++++++++
+ 38 files changed, 5137 insertions(+)
+
+commit 73a50075cd740c5fcd2b5a7f5d1b25bfecf86050
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 20:00:42 2020 -0500
+
+    Populate the TRUSTED_PLATFORM_ASSEMBLIES list in the native embedder
+
+ Makefile                             |  3 ++-
+ src/CsharpSample/CsharpSample.csproj |  2 ++
+ src/native/Makefile                  | 28 ++++++++++++++++++++------
+ src/native/gen-managed.sh            | 32 ++++++++++++++++++++++++++++++
+ src/native/main.c                    | 38 +++++++++++++++++++++++++++++++++++-
+ 5 files changed, 95 insertions(+), 8 deletions(-)
+
+commit f6be6ce04b1943c0686512be5dd452ae84656297
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 17:02:14 2020 -0500
+
+    native depends on runtime-pack-dir-file.txt
+
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit d5e17599f5e7e52972ee459b668b2606b7259f6c
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 17:00:17 2020 -0500
+
+    Add README and LICENSE
+
+ LICENSE   |  7 +++++++
+ README.md | 30 ++++++++++++++++++++++++++++++
+ 2 files changed, 37 insertions(+)
+
+commit 26c8b904699787e6dbc9bd8864e46b83db0faaef
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 16:53:09 2020 -0500
+
+    add some printfs
+
+ src/native/main.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+commit 6a2c1003f6a5bae49d89ce7f840b0fcb81085842
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 16:52:02 2020 -0500
+
+    setup bare minimum native code to init mono
+
+ src/native/Makefile | 11 ++++++++---
+ src/native/main.c   |  7 ++++---
+ 2 files changed, 12 insertions(+), 6 deletions(-)
+
+commit f7be3e41b3535f8fa3c1616eb9621e7ac822caba
+Author: Aleksey Kliger <alklig@microsoft.com>
+Date:   Tue Dec 29 16:40:00 2020 -0500
+
+    Initial commit. Doesn't work.
+    
+    Need to pass some properties to monovm_initialize
+
+ .gitignore                               |  3 ++
+ Makefile                                 | 41 +++++++++++++++++++++++++++
+ src/CsharpSample/CSharpSample.cs         | 15 ++++++++++
+ src/CsharpSample/CsharpSample.csproj     |  8 ++++++
+ src/CsharpSample/Directory.Build.props   |  6 ++++
+ src/GetRuntimePack/Directory.Build.props |  6 ++++
+ src/GetRuntimePack/GetRuntimePack.csproj | 48 ++++++++++++++++++++++++++++++++
+ src/native/Makefile                      | 29 +++++++++++++++++++
+ src/native/main.c                        | 19 +++++++++++++
+ 9 files changed, 175 insertions(+)

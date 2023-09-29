@@ -1,0 +1,70 @@
+[
+  {
+    "url": "https://api.github.com/repos/Kamalpriya/Copilot_Bot/pulls/comments/1339912587",
+    "pull_request_review_id": 1648446146,
+    "id": 1339912587,
+    "node_id": "PRRC_kwDOKH-3_85P3XGL",
+    "diff_hunk": "@@ -22,6 +22,8 @@ public class DialogAndWelcomeBot<T> : DialogBot<T>\n         public DialogAndWelcomeBot(ConversationState conversationState, UserState userState, T dialog, ILogger<DialogBot<T>> logger)\n             : base(conversationState, userState, dialog, logger)\n         {\n+",
+    "path": "SG_Bot/Bots/DialogAndWelcomeBot.cs",
+    "commit_id": "e703a7b081d50f3bd0f792ee8f0b9b1964416025",
+    "original_commit_id": "e703a7b081d50f3bd0f792ee8f0b9b1964416025",
+    "user": {
+      "login": "Kamalpriya",
+      "id": 16173350,
+      "node_id": "MDQ6VXNlcjE2MTczMzUw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16173350?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/Kamalpriya",
+      "html_url": "https://github.com/Kamalpriya",
+      "followers_url": "https://api.github.com/users/Kamalpriya/followers",
+      "following_url": "https://api.github.com/users/Kamalpriya/following{/other_user}",
+      "gists_url": "https://api.github.com/users/Kamalpriya/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/Kamalpriya/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/Kamalpriya/subscriptions",
+      "organizations_url": "https://api.github.com/users/Kamalpriya/orgs",
+      "repos_url": "https://api.github.com/users/Kamalpriya/repos",
+      "events_url": "https://api.github.com/users/Kamalpriya/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/Kamalpriya/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "body": "extra line spaces, no need of a space",
+    "created_at": "2023-09-28T10:42:19Z",
+    "updated_at": "2023-09-28T10:42:32Z",
+    "html_url": "https://github.com/Kamalpriya/Copilot_Bot/pull/1#discussion_r1339912587",
+    "pull_request_url": "https://api.github.com/repos/Kamalpriya/Copilot_Bot/pulls/1",
+    "author_association": "OWNER",
+    "_links": {
+      "self": {
+        "href": "https://api.github.com/repos/Kamalpriya/Copilot_Bot/pulls/comments/1339912587"
+      },
+      "html": {
+        "href": "https://github.com/Kamalpriya/Copilot_Bot/pull/1#discussion_r1339912587"
+      },
+      "pull_request": {
+        "href": "https://api.github.com/repos/Kamalpriya/Copilot_Bot/pulls/1"
+      }
+    },
+    "reactions": {
+      "url": "https://api.github.com/repos/Kamalpriya/Copilot_Bot/pulls/comments/1339912587/reactions",
+      "total_count": 0,
+      "+1": 0,
+      "-1": 0,
+      "laugh": 0,
+      "hooray": 0,
+      "confused": 0,
+      "heart": 0,
+      "rocket": 0,
+      "eyes": 0
+    },
+    "start_line": null,
+    "original_start_line": null,
+    "start_side": null,
+    "line": 25,
+    "original_line": 25,
+    "side": "RIGHT",
+    "original_position": 4,
+    "position": 4,
+    "subject_type": "line"
+  }
+]

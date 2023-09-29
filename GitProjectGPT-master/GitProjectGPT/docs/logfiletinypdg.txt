@@ -1,0 +1,2005 @@
+commit c87b8f96286ec9fba9ce8060490871d790142c31
+Author: higo <yoshiki.higo@gmail.com>
+Date:   Sun Oct 19 19:59:11 2014 +0900
+
+    add a function that calculate a probability of the next element.
+
+ .../tinypdg/prelement/ElementPredictor.java        | 205 +++++++++++++++++++++
+ .../prelement/data/CombinationalFrequency.java     |  33 ++++
+ .../src/yoshikihigo/tinypdg/prelement/db/DAO.java  |  35 ++++
+ 3 files changed, 273 insertions(+)
+
+commit 91d1dbfa429fc60b3c20e7fad7b88c414f66a44d
+Author: higo <yoshiki.higo@gmail.com>
+Date:   Sun Oct 19 13:30:39 2014 +0900
+
+    plement stores extracted data to SQL database.
+
+ TinyPDG/.classpath                                 |   1 +
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 7259 -> 7258 bytes
+ .../lib/sqlite-jdbc-3.8.6/sqlite-jdbc-3.8.6.jar    | Bin 0 -> 3948533 bytes
+ .../tinypdg/prelement/DependenceDistiller.java     |  90 ++++++++++++++-
+ .../tinypdg/prelement/data/DEPENDENCE_TYPE.java    |  12 ++
+ .../tinypdg/prelement/data/Frequency.java          |   4 +-
+ .../src/yoshikihigo/tinypdg/prelement/db/DAO.java  | 125 +++++++++++++++++++++
+ 7 files changed, 225 insertions(+), 7 deletions(-)
+
+commit ad3834bbcafaa543b8ac070b7e47191d9e383e73
+Merge: a32c0e8 d70fded
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Oct 3 14:30:13 2014 +0900
+
+    Merge pull request #1 from k-hotta/master
+    
+    Bug Fix
+
+commit d70fded2529cf1574a1618249fd5727640de74ee
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Tue Sep 16 15:38:36 2014 +0200
+
+    minor change: just modified a string literal in System.err.println
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/PDGGenerationThread.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit e31d8f0945c7f3f03007bbdad381d94c781a471c
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Tue Sep 16 15:36:41 2014 +0200
+
+    make thread classes ignore methods or method pairs when any exception occurred
+
+ .../tinypdg/scorpio/HashCalculationThread.java     |  70 +++---
+ .../tinypdg/scorpio/PDGGenerationThread.java       |  31 ++-
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java | 277 ++++++++++++---------
+ 3 files changed, 213 insertions(+), 165 deletions(-)
+
+commit 9f48a6d6e7d3a43b2e5392ca9b4b2a0081071424
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Tue Sep 16 11:29:11 2014 +0200
+
+    implement getAllEdges() with another algorithm
+
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
+
+commit f01ab29ff96e941fe097245845dce1e826fed517
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Mon Sep 15 13:52:28 2014 +0200
+
+    remove test code
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/NormalizedText.java | 4 ----
+ 1 file changed, 4 deletions(-)
+
+commit b3467743174e006b2569c08e82842ecf54330c50
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Mon Sep 15 13:46:14 2014 +0200
+
+    insert , between two variable declaration fragments in a variable declaration
+    statement
+
+ TinyPDG/src/yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java  |  9 +++++++--
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/NormalizedText.java | 12 +++++++++++-
+ 2 files changed, 18 insertions(+), 3 deletions(-)
+
+commit 9a863df0b0871e8d8dd63ee93a9c362ebc934b34
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Mon Sep 15 12:59:31 2014 +0200
+
+    add a special treat for identifies whose top or tail characters are $
+
+ .../yoshikihigo/tinypdg/scorpio/NormalizedText.java  | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+
+commit 9555979447a8ef2855b2f306b443e19fb3013b74
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Mon Sep 15 11:29:09 2014 +0200
+
+    implement a special treat to normalize String literals, which aims to handle String literals having 1388
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/NormalizedText.java | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+commit a32c0e8c8ef744dbc55caaa5af992f1e166c1a2b
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Sep 15 02:33:30 2014 +0900
+
+    add a frequency sorting function
+
+ .../tinypdg/prelement/DependenceDistiller.java     | 78 ++++++++++++++++++++--
+ .../tinypdg/prelement/data/Frequency.java          | 15 +++++
+ 2 files changed, 87 insertions(+), 6 deletions(-)
+
+commit 183ca72c4d55b1703d17d5960c3be1095782927d
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Sep 14 03:15:12 2014 +0900
+
+    add a dependence distilling function.
+
+ .../tinypdg/prelement/DependenceDistiller.java     | 254 +++++++++++++++++++++
+ 1 file changed, 254 insertions(+)
+
+commit 6fb56a9c6e1fba4f3598ab991076f355fea3abb4
+Author: k-hotta <k-hotta@ist.osaka-u.ac.jp>
+Date:   Thu Sep 11 15:38:05 2014 +0200
+
+    [bug fix] add simple block statements themselves if they have no child statements
+
+ TinyPDG/src/yoshikihigo/tinypdg/pe/StatementInfo.java | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+commit eb21f0ad145c5fde5b6c381ca0ddd6e238d47850
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sat Jul 20 01:11:10 2013 +0900
+
+    The condition of using cache was changed.
+
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java | 22 ++++++----------------
+ 1 file changed, 6 insertions(+), 16 deletions(-)
+
+commit 0a7c086777ecfae85c0347bac0c91c28e8e5ba06
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jul 19 23:23:35 2013 +0900
+
+    bug fix.
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/bellon/Bellon.java | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit f6e954253d8372ee64629331b941d12768bb31ab
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jul 19 17:50:34 2013 +0900
+
+    Slicing was changed from edge-based to node-based.
+
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 7305 -> 7259 bytes
+ .../tinypdg/scorpio/HashCalculationThread.java     |  17 +++
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  10 +-
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   | 164 ++++++++++++++-------
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java | 138 ++++++++++++-----
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  66 +++------
+ .../tinypdg/scorpio/io/CSVEdgeWriter.java          | 114 --------------
+ 7 files changed, 263 insertions(+), 246 deletions(-)
+
+commit 9715ded408dc559f15a8601fa2e4209b687ecd2c
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed Jul 10 17:43:09 2013 +0900
+
+    debugging log was removed.
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/bellon/Bellon.java | 1 -
+ 1 file changed, 1 deletion(-)
+
+commit 8d0d85cdb98e05658f5743eff5f06b97c53c70ab
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jul 8 15:37:17 2013 +0900
+
+    Gapped.java was added.
+    This file is used for extracting gapped (non-configuous) clones from a
+    result of Scorpio.
+
+ .../yoshikihigo/tinypdg/scorpio/bellon/Gapped.java | 55 ++++++++++++++++++++++
+ 1 file changed, 55 insertions(+)
+
+commit d52af8e2b7f1c67212af5caa5d53443698dc221f
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jul 8 10:17:10 2013 +0900
+
+    Intertwined.jaca was modified.
+    This file is used for extracting intertwined clones from a result of
+    Scorpio.
+
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 7259 -> 7305 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class     | Bin 3654 -> 3942 bytes
+ .../tinypdg/scorpio/bellon/Intertwined.java        |  52 ++++++++++++++-------
+ 3 files changed, 36 insertions(+), 16 deletions(-)
+
+commit f51190284a4326945fa3b37a104b097d9982c930
+Merge: a537d2c d1b001f
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jul 2 16:14:32 2013 +0900
+
+    merged
+
+commit a537d2c4eec8442d26a361d5a11e66f08a7dc2ad
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jul 2 16:04:35 2013 +0900
+
+    toString was added
+
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/bellon/Bellon.java   |  1 +
+ .../yoshikihigo/tinypdg/scorpio/bellon/ClonePairInfo.java    |  9 +++++++++
+ .../yoshikihigo/tinypdg/scorpio/bellon/CodeFragmentInfo.java | 12 ++++++++++++
+ 3 files changed, 22 insertions(+)
+
+commit d1b001f3a4cc195f357a497e324af4c655e96f57
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jul 2 15:54:36 2013 +0900
+
+    Intertwined.java was added for investigating how many intertwined clone
+    pairs are detected.
+
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 9540 -> 7259 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class     | Bin 1052 -> 3654 bytes
+ .../yoshikihigo/tinypdg/scorpio/bellon/Bellon.java |  83 +--------------------
+ .../tinypdg/scorpio/bellon/ClonePairInfo.java      |  80 ++++++++++++++++++++
+ .../tinypdg/scorpio/bellon/Intertwined.java        |  45 +++++++++++
+ 5 files changed, 129 insertions(+), 79 deletions(-)
+
+commit 9cd79450f1804d07eb5dee51b2466cd4b452b974
+Merge: b55b63a db78140
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jul 1 23:25:15 2013 +0900
+
+    a new command line parameter was added.
+
+commit b55b63a28dfcf446bc5b900bc7d27b51fcf64f57
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jul 1 23:16:33 2013 +0900
+
+    A new command line parameter was added.
+
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 9414 -> 9540 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class     | Bin 854 -> 1052 bytes
+ .../yoshikihigo/tinypdg/scorpio/bellon/Bellon.java |  24 ++++++++++++---------
+ .../tinypdg/scorpio/bellon/ClonePairInfo.java      |   4 ++++
+ 4 files changed, 18 insertions(+), 10 deletions(-)
+
+commit db781408caa08cd5198d8f1cded7e5b638b202e9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 21 11:36:03 2013 +0900
+
+    .gitignore was added.
+
+ TinyPDG/.gitignore | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 2c00a2f6b977e3aa903a8b586a28768696a9273e
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 21 11:35:05 2013 +0900
+
+    bin was removed from tracking
+
+ .../bin/yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.class | Bin 42339 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/CFG$SequentialCFGs.class    | Bin 3476 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class           | Bin 18589 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/edge/CFGControlEdge.class   | Bin 1113 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class  | Bin 4181 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGJumpEdge.class  | Bin 903 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/edge/CFGNormalEdge.class    | Bin 917 -> 0 bytes
+ .../tinypdg/cfg/node/CFGBreakStatementNode.class        | Bin 490 -> 0 bytes
+ .../tinypdg/cfg/node/CFGContinueStatementNode.class     | Bin 502 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGControlNode.class   | Bin 568 -> 0 bytes
+ .../tinypdg/cfg/node/CFGExpressionNode.class            | Bin 626 -> 0 bytes
+ .../tinypdg/cfg/node/CFGJumpStatementNode.class         | Bin 482 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class  | Bin 7079 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGNodeFactory.class   | Bin 5328 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGNormalNode.class    | Bin 697 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGParameterNode.class | Bin 603 -> 0 bytes
+ .../tinypdg/cfg/node/CFGPseudoNode$PseudoElement.class  | Bin 484 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGPseudoNode.class    | Bin 642 -> 0 bytes
+ .../yoshikihigo/tinypdg/cfg/node/CFGStatementNode.class | Bin 619 -> 0 bytes
+ .../tinypdg/cfg/node/CFGSwitchCaseNode.class            | Bin 622 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/graphviz/Writer.class   | Bin 12893 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class           | Bin 16067 -> 0 bytes
+ .../tinypdg/pdg/edge/PDGControlDependenceEdge.class     | Bin 2473 -> 0 bytes
+ .../tinypdg/pdg/edge/PDGDataDependenceEdge.class        | Bin 2058 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/edge/PDGEdge$TYPE$1.class   | Bin 659 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/edge/PDGEdge$TYPE$2.class   | Bin 656 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/edge/PDGEdge$TYPE$3.class   | Bin 661 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge$TYPE.class | Bin 1575 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class  | Bin 3334 -> 0 bytes
+ .../tinypdg/pdg/edge/PDGExecutionDependenceEdge.class   | Bin 1973 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/node/PDGControlNode.class   | Bin 567 -> 0 bytes
+ .../tinypdg/pdg/node/PDGExpressionNode.class            | Bin 626 -> 0 bytes
+ .../tinypdg/pdg/node/PDGMethodEnterNode.class           | Bin 1565 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/node/PDGNode.class  | Bin 5087 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/node/PDGNodeFactory.class   | Bin 4190 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/node/PDGNormalNode.class    | Bin 697 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/node/PDGParameterNode.class | Bin 603 -> 0 bytes
+ .../yoshikihigo/tinypdg/pdg/node/PDGStatementNode.class | Bin 619 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/BlockInfo.class      | Bin 466 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/ClassInfo.class      | Bin 1746 -> 0 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class            | Bin 3607 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/ExpressionInfo.class | Bin 6221 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/MethodInfo.class     | Bin 3974 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/OperatorInfo.class   | Bin 530 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/pe/ProgramElementInfo.class | Bin 3325 -> 0 bytes
+ .../yoshikihigo/tinypdg/pe/StatementInfo$CATEGORY.class | Bin 2526 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/StatementInfo.class  | Bin 7840 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/TypeInfo.class       | Bin 518 -> 0 bytes
+ .../yoshikihigo/tinypdg/pe/VariableInfo$CATEGORY.class  | Bin 1243 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/VariableInfo.class   | Bin 1430 -> 0 bytes
+ .../tinypdg/scorpio/HashCalculationThread.class         | Bin 3666 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/NormalizedText.class    | Bin 13981 -> 0 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.class           | Bin 3260 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/Scorpio.class   | Bin 11777 -> 0 bytes
+ .../tinypdg/scorpio/Slicing$PDGEdgeComparator.class     | Bin 1841 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/Slicing.class   | Bin 7959 -> 0 bytes
+ .../scorpio/SlicingThread$PDGEdgesComparator.class      | Bin 1230 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/SlicingThread.class | Bin 11129 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/bellon/Bellon.class | Bin 9414 -> 0 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class          | Bin 854 -> 0 bytes
+ .../tinypdg/scorpio/bellon/CodeFragmentInfo.class       | Bin 773 -> 0 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class            | Bin 5535 -> 0 bytes
+ .../tinypdg/scorpio/data/CodeFragmentInfo.class         | Bin 3792 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/data/EdgePairInfo.class | Bin 1520 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/data/NodePairInfo.class | Bin 1450 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/data/PDGPairInfo.class  | Bin 513 -> 0 bytes
+ .../scorpio/io/BellonWriter$LocationalComparator.class  | Bin 1630 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/BellonWriter.class   | Bin 4125 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/CSVEdgeWriter.class  | Bin 4718 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/CSVNodeWriter.class  | Bin 3844 -> 0 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/io/Writer.class | Bin 749 -> 0 bytes
+ .../pdg/PDGMergedNode$LocationalComparator.class        | Bin 1994 -> 0 bytes
+ .../yoshikihigo/tinypdg/scorpio/pdg/PDGMergedNode.class | Bin 6048 -> 0 bytes
+ 73 files changed, 0 insertions(+), 0 deletions(-)
+
+commit a751abf632e31510cc406593efb2acbb3610b9e9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jun 18 00:32:50 2013 +0900
+
+    Classes for bellon comparison were modified.
+
+ .../tinypdg/scorpio/bellon/Bellon.class            | Bin 7092 -> 9414 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class     | Bin 595 -> 854 bytes
+ .../yoshikihigo/tinypdg/scorpio/bellon/Bellon.java | 149 +++++++++++++++------
+ .../tinypdg/scorpio/bellon/ClonePairInfo.java      |   9 +-
+ 4 files changed, 116 insertions(+), 42 deletions(-)
+
+commit d94d1ebd6c270a04a0e8974709f4bac2e7b4d0cb
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 17 01:13:51 2013 +0900
+
+    Bugs in performing pair-wise slicing were removed.
+
+ .../tinypdg/scorpio/PDGGenerationThread.class      |  Bin 3123 -> 3260 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  |  Bin 12631 -> 11777 bytes
+ .../scorpio/Slicing$PDGEdgeComparator.class        |  Bin 0 -> 1841 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  |  Bin 7282 -> 7959 bytes
+ .../scorpio/SlicingThread$PDGEdgesComparator.class |  Bin 0 -> 1230 bytes
+ .../tinypdg/scorpio/SlicingThread.class            |  Bin 10895 -> 11129 bytes
+ .../tinypdg/scorpio/bellon/Bellon.class            |  Bin 0 -> 7092 bytes
+ .../tinypdg/scorpio/bellon/ClonePairInfo.class     |  Bin 0 -> 595 bytes
+ .../tinypdg/scorpio/bellon/CodeFragmentInfo.class  |  Bin 0 -> 773 bytes
+ .../tinypdg/scorpio/data/EdgePairInfo.class        |  Bin 1148 -> 1520 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.java       |    9 +-
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |   20 +-
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   |   79 +-
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  137 ++-
+ .../yoshikihigo/tinypdg/scorpio/bellon/Bellon.java |  232 ++++
+ .../tinypdg/scorpio/bellon/ClonePairInfo.java      |   12 +
+ .../tinypdg/scorpio/bellon/CodeFragmentInfo.java   |   15 +
+ .../tinypdg/scorpio/data/EdgePairInfo.java         |    4 +
+ TinyPDG/test/test026/Test026.java                  | 1108 ++++++++++++++++++++
+ TinyPDG/test/test026/result.csv                    |   22 +
+ 20 files changed, 1553 insertions(+), 85 deletions(-)
+
+commit baaa37cae7844f5f36d2f90ef25f8121ce0c0438
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 9 23:28:52 2013 +0900
+
+    Four options -C, -D, -E, and -M were introduced.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 16070 -> 16067 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.class      | Bin 2867 -> 3123 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11224 -> 12631 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |  32 +++----
+ .../tinypdg/scorpio/PDGGenerationThread.java       |  21 ++++-
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  92 ++++++++++++++++++++-
+ 6 files changed, 124 insertions(+), 21 deletions(-)
+
+commit e84ecdc2b661205e067a847045d4ed6a31013b01
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 7 19:01:04 2013 +0900
+
+    Function for calculating OK value was implemented.
+
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 10323 -> 10895 bytes
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  30 +++++++++--
+ TinyPDG/test/test025/clone.csv                     |  57 +--------------------
+ 3 files changed, 28 insertions(+), 59 deletions(-)
+
+commit 24e74553ef78eff5b008e26ddd0d1e13a278c752
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 7 13:21:31 2013 +0900
+
+    Code for calculating good value was added.
+
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 9989 -> 10323 bytes
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  28 +++--
+ TinyPDG/test/test025/clone.csv                     | 117 ++-------------------
+ 3 files changed, 25 insertions(+), 120 deletions(-)
+
+commit 06841f8ed4f917b344e25a1c6b3bb260ea8e59fa
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 7 13:02:33 2013 +0900
+
+    Some code for filtering clone pairs was added.
+
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 8921 -> 9989 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 4965 -> 5535 bytes
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  41 ++++++++++++++++++++-
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  17 +++++++++
+ 4 files changed, 56 insertions(+), 2 deletions(-)
+
+commit 4b1df4e7dfe10c48bc90295bb17546baef166ebd
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri Jun 7 01:18:56 2013 +0900
+
+    test025 was added.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11223 -> 11224 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |   4 +-
+ TinyPDG/test/test024/clone.csv                     |   4 +
+ TinyPDG/test/test025/Test025.java                  |  44 +++++
+ TinyPDG/test/test025/cfg.dot                       |  89 ++++++++++
+ TinyPDG/test/test025/clone.csv                     | 182 +++++++++++++++++++++
+ TinyPDG/test/test025/pdg.dot                       | 181 ++++++++++++++++++++
+ TinyPDG/test/test025/pdg.png                       | Bin 0 -> 965825 bytes
+ 8 files changed, 502 insertions(+), 2 deletions(-)
+
+commit 35baa17f93e0543f56eea1b61ea1e4059a6baeda
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu Jun 6 18:16:12 2013 +0900
+
+    Function for writing detection results to file in the bellon format was
+    implemented.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11052 -> 11223 bytes
+ .../io/BellonWriter$LocationalComparator.class     | Bin 0 -> 1630 bytes
+ .../tinypdg/scorpio/io/BellonWriter.class          | Bin 0 -> 4125 bytes
+ .../io/{CSVWriter.class => CSVNodeWriter.class}    | Bin 3832 -> 3844 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  37 ++++---
+ .../tinypdg/scorpio/io/BellonWriter.java           | 114 +++++++++++++++++++++
+ .../io/{CSVWriter.java => CSVNodeWriter.java}      |   4 +-
+ 7 files changed, 138 insertions(+), 17 deletions(-)
+
+commit 96cf1143a3eb78b99b639343ea7c1ea60be57c5c
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu Jun 6 16:28:39 2013 +0900
+
+    Outputting on edge format was implemented.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11048 -> 11052 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 7201 -> 7282 bytes
+ .../tinypdg/scorpio/io/CSVEdgeWriter.class         | Bin 0 -> 4718 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |   4 +-
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   | 106 +++++++++----------
+ .../tinypdg/scorpio/io/CSVEdgeWriter.java          | 114 +++++++++++++++++++++
+ 6 files changed, 167 insertions(+), 57 deletions(-)
+
+commit 502d07845beb2bc767aceb16403cc751e2a4f9d0
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu Jun 6 13:34:55 2013 +0900
+
+    A bug in pairwised slicing was removed.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 6126 -> 7201 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 4583 -> 4965 bytes
+ .../tinypdg/scorpio/data/CodeFragmentInfo.class    | Bin 3511 -> 3792 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   |  70 ++++++++++++++-------
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  13 ++++
+ .../tinypdg/scorpio/data/CodeFragmentInfo.java     |  10 +++
+ 6 files changed, 71 insertions(+), 22 deletions(-)
+
+commit 3439f66c2919abeaf67cb2d8eb3d147886af8163
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed Jun 5 23:29:00 2013 +0900
+
+    Now, program passes the test024.
+
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 4534 -> 4583 bytes
+ .../tinypdg/scorpio/data/CodeFragmentInfo.class    | Bin 2471 -> 3511 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.class | Bin 3045 -> 3832 bytes
+ .../pdg/PDGMergedNode$LocationalComparator.class   | Bin 1994 -> 1994 bytes
+ .../tinypdg/scorpio/pdg/PDGMergedNode.class        | Bin 6268 -> 6048 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  13 ++++---
+ .../tinypdg/scorpio/data/CodeFragmentInfo.java     |  30 +++++++++++++++
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.java  |  41 ++++++++++++++-------
+ .../tinypdg/scorpio/pdg/PDGMergedNode.java         |  13 ++-----
+ TinyPDG/test/test024/Test024.java                  |  19 ++++++++++
+ 10 files changed, 86 insertions(+), 30 deletions(-)
+
+commit de10a1d750ade18883fcef17c2e151b079aeee4c
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed Jun 5 19:13:39 2013 +0900
+
+    Function for merging nodes was implemented.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 14751 -> 16070 bytes
+ .../pdg/edge/PDGControlDependenceEdge.class        | Bin 1505 -> 2473 bytes
+ .../tinypdg/pdg/edge/PDGDataDependenceEdge.class   | Bin 1217 -> 2058 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$1.class          | Bin 659 -> 659 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$2.class          | Bin 656 -> 656 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$3.class          | Bin 661 -> 661 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE.class            | Bin 1575 -> 1575 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 3103 -> 3334 bytes
+ .../pdg/edge/PDGExecutionDependenceEdge.class      | Bin 1140 -> 1973 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/node/PDGNode.class | Bin 5087 -> 5087 bytes
+ .../tinypdg/pdg/node/PDGNormalNode.class           | Bin 697 -> 697 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.class      | Bin 2748 -> 2867 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 10843 -> 11048 bytes
+ .../pdg/PDGMergedNode$LocationalComparator.class   | Bin 0 -> 1994 bytes
+ .../tinypdg/scorpio/pdg/PDGMergedNode.class        | Bin 0 -> 6268 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |  69 ++++++--
+ .../tinypdg/pdg/edge/PDGControlDependenceEdge.java |  15 ++
+ .../tinypdg/pdg/edge/PDGDataDependenceEdge.java    |  12 ++
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |   4 +
+ .../pdg/edge/PDGExecutionDependenceEdge.java       |  12 ++
+ .../src/yoshikihigo/tinypdg/pdg/node/PDGNode.java  |   2 +-
+ .../tinypdg/pdg/node/PDGNormalNode.java            |   2 +-
+ .../tinypdg/scorpio/PDGGenerationThread.java       |   2 +
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |   6 +
+ .../tinypdg/scorpio/pdg/PDGMergedNode.java         | 173 +++++++++++++++++++++
+ 25 files changed, 278 insertions(+), 19 deletions(-)
+
+commit 52b9b6d46d59251347ae9e7f456c3b35e6d1bc50
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed Jun 5 12:33:37 2013 +0900
+
+    Now, Hash calculation for identifying duplicated edges is processed with
+    multithreading.
+
+ .../tinypdg/scorpio/HashCalculationThread.class    | Bin 0 -> 3666 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.class      | Bin 3597 -> 2748 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11308 -> 10843 bytes
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 8974 -> 8921 bytes
+ .../tinypdg/scorpio/HashCalculationThread.java     |  57 +++++++++
+ .../tinypdg/scorpio/PDGGenerationThread.java       |  40 +++---
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   | 140 +++++++++++----------
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  61 ++++-----
+ 8 files changed, 171 insertions(+), 127 deletions(-)
+
+commit 688e39f314c0cadaa748d6f20d01c36641426816
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed Jun 5 00:32:41 2013 +0900
+
+    Now, multithread processing works on PDG generation and slicing.
+
+ .../tinypdg/scorpio/PDGGenerationThread.class      | Bin 0 -> 3597 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 12338 -> 11308 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio2.class | Bin 14027 -> 0 bytes
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 4614 -> 8974 bytes
+ .../tinypdg/scorpio/data/PDGPairInfo.class         | Bin 0 -> 513 bytes
+ .../tinypdg/scorpio/PDGGenerationThread.java       |  58 ++++
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  84 +++---
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio2.java  | 314 ---------------------
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java | 200 ++++++++++---
+ .../tinypdg/scorpio/data/PDGPairInfo.java          |  14 +
+ 10 files changed, 270 insertions(+), 400 deletions(-)
+
+commit c1b53189fde9c5cd322f1fdc6b8a7e4eb8b5f742
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jun 4 19:11:46 2013 +0900
+
+    New algorithm for multithreaded slicing was introduced.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 14313 -> 14751 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio2.class | Bin 0 -> 14027 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |   8 +-
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio2.java  | 314 +++++++++++++++++++++
+ 4 files changed, 321 insertions(+), 1 deletion(-)
+
+commit 1c259d29b0b2b47437bac580e0a3f689a769f827
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue Jun 4 15:34:49 2013 +0900
+
+    Initial commit for multithreading for slicing.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 12506 -> 12338 bytes
+ .../tinypdg/scorpio/SlicingThread.class            | Bin 0 -> 4614 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  59 ++++++++--------
+ .../yoshikihigo/tinypdg/scorpio/SlicingThread.java |  75 +++++++++++++++++++++
+ 4 files changed, 105 insertions(+), 29 deletions(-)
+
+commit cd00f9758afa1093e96ee90ca1141f371fb47a35
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 3 22:55:55 2013 +0900
+
+    Function for removing jump statements on CFG and PDG was implemented.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3476 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 18022 -> 18589 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class | Bin 3820 -> 4181 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  | Bin 12851 -> 12893 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 14269 -> 14313 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  24 ++++++++
+ .../src/yoshikihigo/tinypdg/cfg/edge/CFGEdge.java  |  23 +++++++-
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   |   1 +
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |   1 +
+ TinyPDG/test/test004/cfg.dot                       |  26 ++++-----
+ TinyPDG/test/test004/cfg.png                       | Bin 66541 -> 49519 bytes
+ TinyPDG/test/test004/pdg.dot                       |  42 +++++++-------
+ TinyPDG/test/test004/pdg.png                       | Bin 151709 -> 77219 bytes
+ TinyPDG/test/test021/clone.csv                     |  12 ++++
+ TinyPDG/test/test022/clone.csv                     |  62 +++++++++++++++++++++
+ TinyPDG/test/test023/cfg.dot                       |  24 ++++++++
+ TinyPDG/test/test023/cfg.png                       | Bin 0 -> 41298 bytes
+ TinyPDG/test/test023/pdg.dot                       |  38 +++++++++++++
+ TinyPDG/test/test023/pdg.png                       | Bin 0 -> 71013 bytes
+ 19 files changed, 215 insertions(+), 38 deletions(-)
+
+commit 99c0110c198286898f06801e6e7661536879cca8
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 3 22:18:47 2013 +0900
+
+    Instructions for ingoring TypeDeclarationStatement was implemented.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 41404 -> 42339 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3476 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 17955 -> 18022 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 5273 -> 5328 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  | Bin 12851 -> 12851 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 14210 -> 14269 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2443 -> 2526 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 13715 -> 13981 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  53 +-
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |   2 +
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   |   2 +-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |   6 +-
+ .../tinypdg/scorpio/NormalizedText.java            |   9 +
+ TinyPDG/test/test020/clone.csv                     |   0
+ TinyPDG/test/test021/JavadocProcessor.java         | 201 +++++
+ TinyPDG/test/test022/JSlider.java                  | 929 +++++++++++++++++++++
+ TinyPDG/test/test023/Test023.java                  |  19 +
+ 17 files changed, 1211 insertions(+), 10 deletions(-)
+
+commit 67be00fdfe9705e615c4682193ebaf279ad585a3
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 3 15:52:31 2013 +0900
+
+    Empty statement was added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |  Bin 41042 -> 41404 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      |  Bin 17906 -> 17955 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          |  Bin 5031 -> 5273 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      |  Bin 13948 -> 14210 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        |  Bin 2391 -> 2443 bytes
+ .../tinypdg/scorpio/NormalizedText.class           |  Bin 13649 -> 13715 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |   18 +
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |    6 +
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |   30 +-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |    2 +-
+ .../tinypdg/scorpio/NormalizedText.java            |    4 +
+ TinyPDG/test/test004/pdg.dot                       |   42 +-
+ TinyPDG/test/test018/clone.csv                     |  814 +-
+ TinyPDG/test/test019/clone.csv                     | 9969 +-------------------
+ TinyPDG/test/test020/Gcj.java                      |  115 +
+ 15 files changed, 578 insertions(+), 10422 deletions(-)
+
+commit b4b941894b48e5ff35ef41ffae9cf486d2f3a40d
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 3 12:41:09 2013 +0900
+
+    Function removing switchcase nodes from CFGs was implemented.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           |  Bin 3476 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      |  Bin 17089 -> 17906 bytes
+ .../yoshikihigo/tinypdg/cfg/edge/CFGJumpEdge.class |  Bin 903 -> 903 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class |  Bin 6736 -> 7079 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          |  Bin 4950 -> 5031 bytes
+ .../tinypdg/cfg/node/CFGSwitchCaseNode.class       |  Bin 0 -> 622 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  |  Bin 12812 -> 12851 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |   58 +-
+ .../yoshikihigo/tinypdg/cfg/edge/CFGJumpEdge.java  |    2 +-
+ .../src/yoshikihigo/tinypdg/cfg/node/CFGNode.java  |   41 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |    3 +
+ .../tinypdg/cfg/node/CFGSwitchCaseNode.java        |   10 +
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   |    1 +
+ TinyPDG/test/test004/cfg.dot                       |   36 +-
+ TinyPDG/test/test004/cfg.png                       |  Bin 88736 -> 66541 bytes
+ TinyPDG/test/test004/pdg.dot                       |   37 +-
+ TinyPDG/test/test019/clone.csv                     | 1305 ++++++++++----------
+ 17 files changed, 717 insertions(+), 776 deletions(-)
+
+commit 2630f1319a5dd5e43e2d66f178fa5f4f2031b1f5
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon Jun 3 00:41:15 2013 +0900
+
+    Function for removing unduplicated edges was implemented.
+
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$1.class          | Bin 659 -> 659 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$2.class          | Bin 656 -> 656 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$3.class          | Bin 661 -> 661 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE.class            | Bin 1575 -> 1575 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 2839 -> 3103 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/node/PDGNode.class | Bin 4566 -> 5087 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 11675 -> 12506 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 5780 -> 6126 bytes
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |   7 +++++++
+ .../src/yoshikihigo/tinypdg/pdg/node/PDGNode.java  |  16 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  22 ++++++++++++++++++---
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   |   8 ++++++++
+ 12 files changed, 50 insertions(+), 3 deletions(-)
+
+commit 99f70612a2b939d964c16b1d73bd45172075bd3c
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 19:59:32 2013 +0900
+
+    Function for printing elapsed time was implemented.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 10825 -> 11675 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  44 ++++++++++++++++++++-
+ 2 files changed, 43 insertions(+), 1 deletion(-)
+
+commit 20eee86972986d66e662a7aaed042b033c1f30d0
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 18:54:12 2013 +0900
+
+    ownerConditionalBlock was moved to ProgramElementInfo from
+    ExpressionInfo.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |   Bin 41087 -> 41042 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           |   Bin 3476 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      |   Bin 17077 -> 17089 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class |   Bin 7951 -> 7840 bytes
+ .../tinypdg/scorpio/NormalizedText.class           |   Bin 13640 -> 13649 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |     4 +-
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |     5 +-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |    24 +-
+ .../tinypdg/scorpio/NormalizedText.java            |    30 +-
+ TinyPDG/test/test019/clone.csv                     | 10293 +++++++++++++++++++
+ 10 files changed, 10327 insertions(+), 29 deletions(-)
+
+commit 7837c82e22b4385254b77917acec5a6968b1e7e3
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 18:22:21 2013 +0900
+
+    test019 was added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 41068 -> 41087 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 17200 -> 17077 bytes
+ .../tinypdg/cfg/node/CFGControlNode.class          | Bin 605 -> 568 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 5072 -> 4950 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 14032 -> 13948 bytes
+ .../tinypdg/pdg/node/PDGControlNode.class          | Bin 604 -> 567 bytes
+ .../tinypdg/pdg/node/PDGMethodEnterNode.class      | Bin 1510 -> 1565 bytes
+ .../tinypdg/pdg/node/PDGNodeFactory.class          | Bin 4107 -> 4190 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 3607 -> 3607 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 6649 -> 6221 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 2897 -> 3325 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 8048 -> 7951 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 106 ++--
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  12 +-
+ .../tinypdg/cfg/node/CFGControlNode.java           |   6 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |  11 +-
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |  10 +-
+ .../tinypdg/pdg/node/PDGControlNode.java           |   6 +-
+ .../tinypdg/pdg/node/PDGMethodEnterNode.java       |   5 +-
+ .../tinypdg/pdg/node/PDGNodeFactory.java           |   6 +-
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  11 -
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  13 +
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  14 +-
+ TinyPDG/test/test019/AdviceAdapter.java            | 625 +++++++++++++++++++++
+ 24 files changed, 735 insertions(+), 90 deletions(-)
+
+commit 0ca32bf019e2db8eb43cb351192016702567e603
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 17:19:24 2013 +0900
+
+    test018 was added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |  Bin 41071 -> 41068 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      |  Bin 17199 -> 17200 bytes
+ .../tinypdg/scorpio/NormalizedText.class           |  Bin 13533 -> 13640 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |    2 +-
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |    2 +-
+ .../tinypdg/scorpio/NormalizedText.java            |   54 +-
+ TinyPDG/test/test018/ClassReader.java              | 2202 +++++++++++++++++
+ TinyPDG/test/test018/clone.csv                     | 2583 ++++++++++++++++++++
+ 8 files changed, 4817 insertions(+), 26 deletions(-)
+
+commit eda384b72605a68620ece5bf90b1a3826429d566
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 01:56:18 2013 +0900
+
+    test017 was added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 40962 -> 41071 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 13558 -> 13533 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  31 +-
+ .../tinypdg/scorpio/NormalizedText.java            |   5 +-
+ TinyPDG/test/test015/cfg.dot                       |  69 +++++
+ TinyPDG/test/test015/cfg.png                       | Bin 0 -> 230452 bytes
+ TinyPDG/test/test015/pdg.dot                       | 147 ++++++++++
+ TinyPDG/test/test015/pdg.png                       | Bin 0 -> 706230 bytes
+ TinyPDG/test/test017/AnnotationWriter.java         | 318 +++++++++++++++++++++
+ TinyPDG/test/test017/clone.csv                     |  56 ++++
+ 10 files changed, 612 insertions(+), 14 deletions(-)
+
+commit c6167fb7ff0d8a64bc12b69ff7e243a0ba0a65eb
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 01:19:54 2013 +0900
+
+    test016 was added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 40742 -> 40962 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  | Bin 12812 -> 12812 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 13775 -> 13558 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  30 +++-
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   |   2 +-
+ .../tinypdg/scorpio/NormalizedText.java            |  86 +++++------
+ TinyPDG/test/test016/AnnotationVisitor.java        | 169 +++++++++++++++++++++
+ TinyPDG/test/test016/clone.csv                     |   0
+ 8 files changed, 231 insertions(+), 56 deletions(-)
+
+commit 017ff4ab5a9b6640918ea75a8045f42ac991c77e
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 00:34:11 2013 +0900
+
+    directory for test code was moved.
+
+ .../tinypdg/scorpio/test/test013/test013.class     | Bin 782 -> 0 bytes
+ .../tinypdg/scorpio/test/test014/Test014.class     | Bin 647 -> 0 bytes
+ .../tinypdg/scorpio/test/test015/Test015.class     | Bin 1583 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test001/Test001.class | Bin 453 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test002/Test002.class | Bin 487 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test003/Test003.class | Bin 755 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test004/Test004.class | Bin 800 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test005/Test005.class | Bin 443 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test006/Test006.class | Bin 605 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test007/Test007.class | Bin 632 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test008/Test008.class | Bin 686 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test009/Test009.class | Bin 727 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test010/Test010.class | Bin 749 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/test/test011/A.class   | Bin 147 -> 0 bytes
+ .../tinypdg/test/test011/Test011$1.class           | Bin 859 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test011/Test011.class | Bin 690 -> 0 bytes
+ .../yoshikihigo/tinypdg/test/test012/Test012.class | Bin 575 -> 0 bytes
+ .../tinypdg/scorpio/test/test013/clone.csv         |   6 --
+ .../tinypdg/scorpio/test/test014/clone.csv         |   6 --
+ .../tinypdg/scorpio/test/test015/clone.csv         |   6 --
+ .../src/yoshikihigo/tinypdg/test/test001/cfg.dot   |  12 ----
+ .../src/yoshikihigo/tinypdg/test/test001/cfg.png   | Bin 22901 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test001/pdg.dot   |  21 ------
+ .../src/yoshikihigo/tinypdg/test/test001/pdg.png   | Bin 43792 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test002/cfg.dot   |  10 ---
+ .../src/yoshikihigo/tinypdg/test/test002/cfg.png   | Bin 21212 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test002/pdg.dot   |  17 -----
+ .../src/yoshikihigo/tinypdg/test/test002/pdg.png   | Bin 31807 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.dot   |  17 -----
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 53136 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test003/pdg.dot   |  34 ----------
+ .../src/yoshikihigo/tinypdg/test/test003/pdg.png   | Bin 88078 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.dot   |  35 ----------
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.png   | Bin 88736 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test004/pdg.dot   |  57 ----------------
+ .../src/yoshikihigo/tinypdg/test/test004/pdg.png   | Bin 151709 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test005/cfg.dot   |  11 ---
+ .../src/yoshikihigo/tinypdg/test/test005/cfg.png   | Bin 19631 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test005/pdg.png   | Bin 28799 -> 0 bytes
+ .../tinypdg/test/test005/pdg_dotbug.dot            |  18 -----
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.dot   |  22 ------
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.png   | Bin 61530 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test006/pdg.dot   |  42 ------------
+ .../src/yoshikihigo/tinypdg/test/test006/pdg.png   | Bin 114458 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.dot   |   0
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.png   | Bin 67080 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test007/pdg.dot   |  39 -----------
+ .../src/yoshikihigo/tinypdg/test/test007/pdg.png   | Bin 87305 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.dot   |  27 --------
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.png   | Bin 78661 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test008/pdg.dot   |  51 --------------
+ .../src/yoshikihigo/tinypdg/test/test008/pdg.png   | Bin 154768 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.dot   |  37 -----------
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.png   | Bin 124696 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test009/pdg.dot   |  64 ------------------
+ .../src/yoshikihigo/tinypdg/test/test009/pdg.png   | Bin 184626 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test010/cfg.dot   |  42 ------------
+ .../src/yoshikihigo/tinypdg/test/test010/cfg.png   | Bin 142284 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test010/pdg.dot   |  74 ---------------------
+ .../src/yoshikihigo/tinypdg/test/test010/pdg.png   | Bin 253504 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.dot   |  18 -----
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.png   | Bin 34124 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test012/cfg.dot   |  24 -------
+ .../src/yoshikihigo/tinypdg/test/test012/cfg.png   | Bin 60325 -> 0 bytes
+ .../src/yoshikihigo/tinypdg/test/test012/pdg.dot   |  55 ---------------
+ .../src/yoshikihigo/tinypdg/test/test012/pdg.png   | Bin 163110 -> 0 bytes
+ .../tinypdg => }/test/test001/Test001.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test001/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test001/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test001/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test001/pdg.png  | Bin
+ .../tinypdg => }/test/test002/Test002.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test002/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test002/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test002/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test002/pdg.png  | Bin
+ .../tinypdg => }/test/test003/Test003.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test003/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test003/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test003/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test003/pdg.png  | Bin
+ .../tinypdg => }/test/test004/Test004.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test004/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test004/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test004/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test004/pdg.png  | Bin
+ .../tinypdg => }/test/test005/Test005.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test005/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test005/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test005/pdg.png  | Bin
+ .../tinypdg => }/test/test005/pdg_dotbug.dot       |   0
+ .../tinypdg => }/test/test006/Test006.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test006/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test006/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test006/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test006/pdg.png  | Bin
+ .../tinypdg => }/test/test007/Test007.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test007/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test007/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test007/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test007/pdg.png  | Bin
+ .../tinypdg => }/test/test008/Test008.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test008/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test008/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test008/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test008/pdg.png  | Bin
+ .../tinypdg => }/test/test009/Test009.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test009/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test009/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test009/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test009/pdg.png  | Bin
+ .../tinypdg => }/test/test010/Test010.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test010/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test010/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test010/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test010/pdg.png  | Bin
+ .../tinypdg => }/test/test011/Test011.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test011/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test011/cfg.png  | Bin
+ .../tinypdg => }/test/test012/Test012.java         |   0
+ .../yoshikihigo/tinypdg => }/test/test012/cfg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test012/cfg.png  | Bin
+ .../yoshikihigo/tinypdg => }/test/test012/pdg.dot  |   0
+ .../yoshikihigo/tinypdg => }/test/test012/pdg.png  | Bin
+ .../tinypdg/scorpio => }/test/test013/clone.csv    |   0
+ .../tinypdg/scorpio => }/test/test013/test013.java |   0
+ .../tinypdg/scorpio => }/test/test014/Test014.java |   0
+ .../tinypdg/scorpio => }/test/test014/clone.csv    |   0
+ .../tinypdg/scorpio => }/test/test015/Test015.java |   0
+ .../tinypdg/scorpio => }/test/test015/clone.csv    |   0
+ 130 files changed, 745 deletions(-)
+
+commit db03b4ac92a6d06647b49c5212e3487b9833129f
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sun Jun 2 00:30:15 2013 +0900
+
+    Generating normalized text for VariableDeclarationExpression was
+    implemented.
+
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.class | Bin 40690 -> 40742 bytes
+ .../tinypdg/scorpio/NormalizedText.class            | Bin 13607 -> 13775 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java  |   6 +++++-
+ .../yoshikihigo/tinypdg/scorpio/NormalizedText.java |  11 ++++++++++-
+ 4 files changed, 15 insertions(+), 2 deletions(-)
+
+commit 05c0abc4ab21e47df815a9fbdb6e5aee1bb0bbfd
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sat Jun 1 02:46:37 2013 +0900
+
+    clone detection result was updated.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/test/test014/clone.csv | 6 ++++++
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/test/test015/clone.csv | 6 ++++++
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/test/test014/clone.csv | 6 ++++++
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/test/test015/clone.csv | 6 ++++++
+ 4 files changed, 24 insertions(+)
+
+commit baea3ed06802bc7fb67ab72c3f7013ec878de4b1
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sat Jun 1 02:45:28 2013 +0900
+
+    P-match normalization was implemented.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 40594 -> 40690 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 11857 -> 13607 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 10787 -> 10825 bytes
+ .../tinypdg/scorpio/test/test015/Test015.class     | Bin 0 -> 1583 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  24 +++++--
+ .../tinypdg/scorpio/NormalizedText.java            |  73 ++++++++++++++++++++-
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  10 +--
+ .../tinypdg/scorpio/test/test015/Test015.java      |  52 +++++++++++++++
+ 8 files changed, 146 insertions(+), 13 deletions(-)
+
+commit 615ec22c8c5e784bd1d396420a9f5fda0cda1caa
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri May 31 21:41:58 2013 +0900
+
+    Now, program pass the test014 for clone detection.
+
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$1.class          | Bin 659 -> 659 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$2.class          | Bin 656 -> 656 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$3.class          | Bin 661 -> 661 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE.class            | Bin 1575 -> 1575 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 2603 -> 2839 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 11845 -> 11857 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 9995 -> 10787 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 5756 -> 5780 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 4147 -> 4534 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.class | Bin 3027 -> 3045 bytes
+ .../tinypdg/scorpio/test/test013/clone.csv         |   6 ++++
+ .../tinypdg/scorpio/test/test013/clone.txt         |   0
+ .../tinypdg/scorpio/test/test014/Test014.class     | Bin 0 -> 647 bytes
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |  10 ++++++-
+ .../tinypdg/scorpio/NormalizedText.java            |   1 +
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  33 ++++++++++++++++-----
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   |  22 ++++++--------
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  28 ++++++++++++-----
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.java  |   2 +-
+ .../tinypdg/scorpio/test/test013/clone.csv         |   6 ++++
+ .../tinypdg/scorpio/test/test013/clone.txt         |   0
+ .../tinypdg/scorpio/test/test014/Test014.java      |  18 +++++++++++
+ 22 files changed, 96 insertions(+), 30 deletions(-)
+
+commit 0d672cc9cbc739c7b2b03b2ce28fe7dc80e29772
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri May 31 19:19:17 2013 +0900
+
+    test013 was added
+
+ TinyPDG/bin/yoshikihigo/tinypdg/scorpio/test/test013/clone.txt | 0
+ TinyPDG/src/yoshikihigo/tinypdg/scorpio/test/test013/clone.txt | 0
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+
+commit ec02856572f3e91078fadaef17b6a2046d9dff95
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri May 31 19:18:36 2013 +0900
+
+    Some arrangements for clone detection
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 40518 -> 40594 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$1.class          | Bin 659 -> 659 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$2.class          | Bin 656 -> 656 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$3.class          | Bin 661 -> 661 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE.class            | Bin 1575 -> 1575 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 2202 -> 2603 bytes
+ .../bin/yoshikihigo/tinypdg/pe/OperatorInfo.class  | Bin 477 -> 530 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 7845 -> 8048 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 11359 -> 11845 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 7625 -> 9995 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 5484 -> 5756 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 1387 -> 4147 bytes
+ .../tinypdg/scorpio/data/CodeFragmentInfo.class    | Bin 0 -> 2471 bytes
+ .../tinypdg/scorpio/data/NodePairInfo.class        | Bin 1450 -> 1450 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.class | Bin 0 -> 3027 bytes
+ .../yoshikihigo/tinypdg/scorpio/io/Writer.class    | Bin 0 -> 749 bytes
+ .../tinypdg/scorpio/test/test013/test013.class     | Bin 0 -> 782 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |   5 ++
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |  18 +++++
+ .../src/yoshikihigo/tinypdg/pe/OperatorInfo.java   |   1 +
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  20 +++---
+ .../tinypdg/scorpio/NormalizedText.java            |  49 ++++++++++---
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  55 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   |  15 ++--
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  61 +++++++++++++++-
+ .../tinypdg/scorpio/data/CodeFragmentInfo.java     |  56 +++++++++++++++
+ .../tinypdg/scorpio/data/NodePairInfo.java         |   2 +-
+ .../yoshikihigo/tinypdg/scorpio/io/CSVWriter.java  |  78 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/scorpio/io/Writer.java |  19 +++++
+ .../tinypdg/scorpio/test/test013/test013.java      |  20 ++++++
+ 30 files changed, 374 insertions(+), 25 deletions(-)
+
+commit 2a21bb83cf28cbe40898fb6c01bb3da4374af313
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 30 01:15:45 2013 +0900
+
+    isomorphic subgraph identification implementation was added, but not
+    completed yet.
+
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 7323 -> 7625 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Slicing.class  | Bin 0 -> 5484 bytes
+ .../tinypdg/scorpio/data/ClonePairInfo.class       | Bin 0 -> 1387 bytes
+ .../tinypdg/scorpio/data/EdgePairInfo.class        | Bin 0 -> 1148 bytes
+ .../tinypdg/scorpio/data/NodePairInfo.class        | Bin 0 -> 1450 bytes
+ .../bin/yoshikihigo/tinypdg/test/test009/pdg.dot   |  64 ++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test009/pdg.png   | Bin 0 -> 184626 bytes
+ .../bin/yoshikihigo/tinypdg/test/test010/pdg.dot   |  74 ++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test010/pdg.png   | Bin 0 -> 253504 bytes
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   |  46 +++----
+ .../src/yoshikihigo/tinypdg/scorpio/Slicing.java   | 132 +++++++++++++++++++++
+ .../tinypdg/scorpio/data/ClonePairInfo.java        |  23 ++++
+ .../tinypdg/scorpio/data/EdgePairInfo.java         |  30 +++++
+ .../tinypdg/scorpio/data/NodePairInfo.java         |  30 +++++
+ .../src/yoshikihigo/tinypdg/test/test009/pdg.dot   |  64 ++++++++++
+ .../src/yoshikihigo/tinypdg/test/test009/pdg.png   | Bin 0 -> 184626 bytes
+ .../src/yoshikihigo/tinypdg/test/test010/pdg.dot   |  74 ++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test010/pdg.png   | Bin 0 -> 253504 bytes
+ 18 files changed, 516 insertions(+), 21 deletions(-)
+
+commit 158c2fb85a4e69bb3b6c9b81711c3ef58187fd47
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 29 18:37:28 2013 +0900
+
+    Initial commit for clone detection.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 39842 -> 40518 bytes
+ .../tinypdg/pdg/node/PDGNodeFactory.class          | Bin 4041 -> 4107 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 3676 -> 3607 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 6360 -> 6649 bytes
+ .../bin/yoshikihigo/tinypdg/pe/OperatorInfo.class  | Bin 0 -> 477 bytes
+ .../tinypdg/scorpio/NormalizedText.class           | Bin 0 -> 11359 bytes
+ .../bin/yoshikihigo/tinypdg/scorpio/Scorpio.class  | Bin 0 -> 7323 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 110 +++--
+ .../tinypdg/pdg/node/PDGNodeFactory.java           |   8 +-
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  44 +-
+ .../src/yoshikihigo/tinypdg/pe/OperatorInfo.java   |  12 +
+ .../tinypdg/scorpio/NormalizedText.java            | 467 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/scorpio/Scorpio.java   | 135 ++++++
+ 13 files changed, 721 insertions(+), 55 deletions(-)
+
+commit 69a9d6f41d1287d0a40c9ac6cfe2a4168156c9b4
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 28 21:11:23 2013 +0900
+
+    Now, program passes the test012 for PDG.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 39433 -> 39842 bytes
+ .../yoshikihigo/tinypdg/test/test012/Test012.class | Bin 0 -> 575 bytes
+ .../bin/yoshikihigo/tinypdg/test/test012/cfg.dot   |  24 +++++++++
+ .../bin/yoshikihigo/tinypdg/test/test012/cfg.png   | Bin 0 -> 60325 bytes
+ .../bin/yoshikihigo/tinypdg/test/test012/pdg.dot   |  55 +++++++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test012/pdg.png   | Bin 0 -> 163110 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  19 ++++++-
+ .../yoshikihigo/tinypdg/test/test012/Test012.java  |  14 ++++++
+ .../src/yoshikihigo/tinypdg/test/test012/cfg.dot   |  24 +++++++++
+ .../src/yoshikihigo/tinypdg/test/test012/cfg.png   | Bin 0 -> 60325 bytes
+ .../src/yoshikihigo/tinypdg/test/test012/pdg.dot   |  55 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test012/pdg.png   | Bin 0 -> 163110 bytes
+ 12 files changed, 189 insertions(+), 2 deletions(-)
+
+commit 4a9f2861229d25937f1972524297046c4b8f2b23
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sat May 25 01:45:31 2013 +0900
+
+    Now, program passes the test008 for PDG.
+
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 6274 -> 6360 bytes
+ .../bin/yoshikihigo/tinypdg/test/test007/cfg.dot   |  23 ----------
+ .../bin/yoshikihigo/tinypdg/test/test007/pdg.dot   |  39 ++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test007/pdg.png   | Bin 0 -> 87305 bytes
+ .../bin/yoshikihigo/tinypdg/test/test008/pdg.dot   |  51 +++++++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test008/pdg.png   | Bin 0 -> 154768 bytes
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |   6 +++
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.dot   |  23 ----------
+ .../src/yoshikihigo/tinypdg/test/test007/pdg.dot   |  39 ++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test007/pdg.png   | Bin 0 -> 87305 bytes
+ .../src/yoshikihigo/tinypdg/test/test008/pdg.dot   |  51 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test008/pdg.png   | Bin 0 -> 154768 bytes
+ 12 files changed, 186 insertions(+), 46 deletions(-)
+
+commit bc1c211330d00670b055e111a09ecf41a6a09453
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Sat May 25 01:08:46 2013 +0900
+
+    Now, program pass the test006 for PDG.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 13988 -> 14032 bytes
+ .../bin/yoshikihigo/tinypdg/test/test004/pdg.dot   |  57 +++++++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test004/pdg.png   | Bin 0 -> 151709 bytes
+ .../bin/yoshikihigo/tinypdg/test/test005/pdg.png   | Bin 0 -> 28799 bytes
+ .../tinypdg/test/test005/pdg_dotbug.dot            |  18 +++++++
+ .../bin/yoshikihigo/tinypdg/test/test006/pdg.dot   |  42 +++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test006/pdg.png   | Bin 0 -> 114458 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |   2 -
+ .../src/yoshikihigo/tinypdg/test/test004/pdg.dot   |  57 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test004/pdg.png   | Bin 0 -> 151709 bytes
+ .../src/yoshikihigo/tinypdg/test/test005/pdg.png   | Bin 0 -> 28799 bytes
+ .../tinypdg/test/test005/pdg_dotbug.dot            |  18 +++++++
+ .../src/yoshikihigo/tinypdg/test/test006/pdg.dot   |  42 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test006/pdg.png   | Bin 0 -> 114458 bytes
+ 14 files changed, 234 insertions(+), 2 deletions(-)
+
+commit f294a1829213f35d62dfac11f2d3785eb53e834f
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri May 24 02:08:45 2013 +0900
+
+    Now, program passes the test003 for PDG.
+
+ .../tinypdg/cfg/node/CFGExpressionNode.class       | Bin 0 -> 626 bytes
+ .../tinypdg/cfg/node/CFGJumpStatementNode.class    | Bin 518 -> 482 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 4886 -> 5072 bytes
+ .../tinypdg/cfg/node/CFGNormalNode.class           | Bin 596 -> 697 bytes
+ .../tinypdg/cfg/node/CFGStatementNode.class        | Bin 0 -> 619 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 13875 -> 13988 bytes
+ .../tinypdg/pdg/node/PDGExpressionNode.class       | Bin 0 -> 626 bytes
+ .../tinypdg/pdg/node/PDGNodeFactory.class          | Bin 2946 -> 4041 bytes
+ .../tinypdg/pdg/node/PDGNormalNode.class           | Bin 598 -> 697 bytes
+ .../tinypdg/pdg/node/PDGStatementNode.class        | Bin 0 -> 619 bytes
+ .../bin/yoshikihigo/tinypdg/test/test003/pdg.dot   |  34 ++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test003/pdg.png   | Bin 0 -> 88078 bytes
+ .../tinypdg/cfg/node/CFGExpressionNode.java        |  10 ++++
+ .../tinypdg/cfg/node/CFGJumpStatementNode.java     |   5 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |   6 ++-
+ .../tinypdg/cfg/node/CFGNormalNode.java            |   6 +--
+ .../tinypdg/cfg/node/CFGStatementNode.java         |  11 ++++
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |  23 ++++-----
+ .../tinypdg/pdg/node/PDGExpressionNode.java        |  10 ++++
+ .../tinypdg/pdg/node/PDGNodeFactory.java           |  57 +++++++++++++++++++--
+ .../tinypdg/pdg/node/PDGNormalNode.java            |   9 ++--
+ .../tinypdg/pdg/node/PDGStatementNode.java         |  10 ++++
+ .../src/yoshikihigo/tinypdg/test/test003/pdg.dot   |  34 ++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test003/pdg.png   | Bin 0 -> 88078 bytes
+ 24 files changed, 187 insertions(+), 28 deletions(-)
+
+commit 51284d4bd40b0b2d38c23e14868c1307096fd5ed
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Fri May 24 01:29:35 2013 +0900
+
+    Now, program passes the test002 for PDG.
+
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.class | Bin 39352 -> 39433 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class       | Bin 13874 -> 13875 bytes
+ .../tinypdg/pdg/node/DefaultPDGNodeFactory.class    | Bin 8162 -> 0 bytes
+ .../bin/yoshikihigo/tinypdg/test/test001/pdg.dot    |   6 +++---
+ .../bin/yoshikihigo/tinypdg/test/test002/pdg.dot    |  17 +++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test002/pdg.png    | Bin 0 -> 31807 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java  |   1 +
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java        |   2 +-
+ .../src/yoshikihigo/tinypdg/test/test001/pdg.dot    |   6 +++---
+ .../src/yoshikihigo/tinypdg/test/test002/pdg.dot    |  17 +++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test002/pdg.png    | Bin 0 -> 31807 bytes
+ 11 files changed, 42 insertions(+), 7 deletions(-)
+
+commit d7c7f7632bb776c9fe04a4a7fcbae3342ec024ad
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 21:13:44 2013 +0900
+
+    Now, program passes the test001 for PDG.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 39302 -> 39352 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  | Bin 10177 -> 12812 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 13350 -> 13874 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 2202 -> 2202 bytes
+ .../tinypdg/pdg/node/PDGMethodEnterNode.class      | Bin 1445 -> 1510 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 6221 -> 6274 bytes
+ .../bin/yoshikihigo/tinypdg/test/test001/pdg.dot   |  21 +++
+ .../bin/yoshikihigo/tinypdg/test/test001/pdg.png   | Bin 0 -> 43792 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  11 +-
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   | 182 +++++++++++----------
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       |  61 ++++---
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |   2 +-
+ .../tinypdg/pdg/node/PDGMethodEnterNode.java       |   1 +
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |   5 +-
+ .../src/yoshikihigo/tinypdg/test/test001/pdg.dot   |  21 +++
+ .../src/yoshikihigo/tinypdg/test/test001/pdg.png   | Bin 0 -> 43792 bytes
+ 16 files changed, 190 insertions(+), 114 deletions(-)
+
+commit df64eba8d33dc0e57c66c381ab2038582a3b5f42
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 18:35:41 2013 +0900
+
+    Initial commit for buidling PDGs.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 39148 -> 39302 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 16108 -> 17199 bytes
+ .../tinypdg/cfg/node/CFGJumpStatementNode.class    | Bin 567 -> 518 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class | Bin 6821 -> 6736 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 4631 -> 4886 bytes
+ .../tinypdg/cfg/node/CFGNormalNode.class           | Bin 562 -> 596 bytes
+ .../tinypdg/cfg/node/CFGParameterNode.class        | Bin 0 -> 603 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pdg/PDG.class      | Bin 0 -> 13350 bytes
+ .../pdg/edge/PDGControlDependenceEdge.class        | Bin 0 -> 1505 bytes
+ .../tinypdg/pdg/edge/PDGDataDependenceEdge.class   | Bin 0 -> 1217 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$1.class          | Bin 0 -> 659 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$2.class          | Bin 0 -> 656 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE$3.class          | Bin 0 -> 661 bytes
+ .../tinypdg/pdg/edge/PDGEdge$TYPE.class            | Bin 0 -> 1575 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/edge/PDGEdge.class | Bin 0 -> 2202 bytes
+ .../pdg/edge/PDGExecutionDependenceEdge.class      | Bin 0 -> 1140 bytes
+ .../tinypdg/pdg/node/DefaultPDGNodeFactory.class   | Bin 0 -> 8162 bytes
+ .../tinypdg/pdg/node/PDGControlNode.class          | Bin 0 -> 604 bytes
+ .../tinypdg/pdg/node/PDGMethodEnterNode.class      | Bin 0 -> 1445 bytes
+ .../bin/yoshikihigo/tinypdg/pdg/node/PDGNode.class | Bin 0 -> 4566 bytes
+ .../tinypdg/pdg/node/PDGNodeFactory.class          | Bin 0 -> 2946 bytes
+ .../tinypdg/pdg/node/PDGNormalNode.class           | Bin 0 -> 598 bytes
+ .../tinypdg/pdg/node/PDGParameterNode.class        | Bin 0 -> 603 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 3601 -> 3676 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 5803 -> 6221 bytes
+ .../bin/yoshikihigo/tinypdg/pe/MethodInfo.class    | Bin 3770 -> 3974 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 2605 -> 2897 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2391 -> 2391 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 7905 -> 7845 bytes
+ .../pe/VariableAssignmentAndReference.class        | Bin 328 -> 0 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  57 ++--
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  29 +-
+ .../src/yoshikihigo/tinypdg/cfg/node/CFGNode.java  |   7 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |  12 +-
+ .../tinypdg/cfg/node/CFGNormalNode.java            |   6 +-
+ .../tinypdg/cfg/node/CFGParameterNode.java         |  10 +
+ TinyPDG/src/yoshikihigo/tinypdg/pdg/PDG.java       | 357 +++++++++++++++++++++
+ .../tinypdg/pdg/edge/PDGControlDependenceEdge.java |  28 ++
+ .../tinypdg/pdg/edge/PDGDataDependenceEdge.java    |  19 ++
+ .../src/yoshikihigo/tinypdg/pdg/edge/PDGEdge.java  |  59 ++++
+ .../pdg/edge/PDGExecutionDependenceEdge.java       |  16 +
+ .../tinypdg/pdg/node/PDGControlNode.java           |  10 +
+ .../tinypdg/pdg/node/PDGMethodEnterNode.java       |  19 ++
+ .../src/yoshikihigo/tinypdg/pdg/node/PDGNode.java  |  95 ++++++
+ .../tinypdg/pdg/node/PDGNodeFactory.java           |  61 ++++
+ .../tinypdg/pdg/node/PDGNormalNode.java            |  10 +
+ .../tinypdg/pdg/node/PDGParameterNode.java         |  10 +
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  16 +-
+ TinyPDG/src/yoshikihigo/tinypdg/pe/MethodInfo.java |   9 +-
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  10 +
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |   5 +-
+ .../tinypdg/pe/VariableAssignmentAndReference.java |  10 -
+ 52 files changed, 798 insertions(+), 57 deletions(-)
+
+commit 01eac3a61073483511863f069123243f33282b9b
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 14:06:44 2013 +0900
+
+    Adding modifier information to MethodInfo
+
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.class | Bin 39115 -> 39148 bytes
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.dot    |   2 +-
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.png    | Bin 33925 -> 34124 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java  |   1 +
+ 4 files changed, 2 insertions(+), 1 deletion(-)
+
+commit e64294395fc4faf4f06760541231e802e300bcb8
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 14:05:01 2013 +0900
+
+    A bug in printing CFG node information was fixed.
+
+ .../bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class  | Bin 6706 -> 6821 bytes
+ .../src/yoshikihigo/tinypdg/cfg/node/CFGNode.java   |   8 +++++++-
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.dot    |   2 +-
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.png    | Bin 33925 -> 34124 bytes
+ 4 files changed, 8 insertions(+), 2 deletions(-)
+
+commit d54726875268784579ec8de8dd4a506d291eceed
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 13:57:52 2013 +0900
+
+    Now, program passes the test011.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 38125 -> 39115 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 1993 -> 2605 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/TypeInfo.class  | Bin 465 -> 518 bytes
+ .../tinypdg/pe/VariableInfo$CATEGORY.class         | Bin 1243 -> 1243 bytes
+ .../bin/yoshikihigo/tinypdg/pe/VariableInfo.class  | Bin 748 -> 1430 bytes
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.dot   |   6 +-
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.png   | Bin 27799 -> 33925 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  63 +++++++++++++--------
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  19 ++++++-
+ TinyPDG/src/yoshikihigo/tinypdg/pe/TypeInfo.java   |   1 +
+ .../src/yoshikihigo/tinypdg/pe/VariableInfo.java   |  22 +++++--
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.dot   |   6 +-
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.png   | Bin 27799 -> 33925 bytes
+ 13 files changed, 83 insertions(+), 34 deletions(-)
+
+commit 3c69b21e356528d7ac5879940256efd9571761bd
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 23 03:28:21 2013 +0900
+
+    Instructions for setting texts of program elements were added.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 37348 -> 38125 bytes
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.dot   |   2 +-
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 52736 -> 53136 bytes
+ .../bin/yoshikihigo/tinypdg/test/test004/cfg.dot   |   6 +-
+ .../bin/yoshikihigo/tinypdg/test/test004/cfg.png   | Bin 86931 -> 88736 bytes
+ .../bin/yoshikihigo/tinypdg/test/test005/cfg.dot   |   2 +-
+ .../bin/yoshikihigo/tinypdg/test/test005/cfg.png   | Bin 18799 -> 19631 bytes
+ .../bin/yoshikihigo/tinypdg/test/test006/cfg.dot   |   4 +-
+ .../bin/yoshikihigo/tinypdg/test/test006/cfg.png   | Bin 55687 -> 61530 bytes
+ .../bin/yoshikihigo/tinypdg/test/test007/cfg.dot   |   8 +-
+ .../bin/yoshikihigo/tinypdg/test/test007/cfg.png   | Bin 64437 -> 67080 bytes
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.dot   |   2 +-
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.png   | Bin 76140 -> 78661 bytes
+ .../bin/yoshikihigo/tinypdg/test/test009/cfg.dot   |   8 +-
+ .../bin/yoshikihigo/tinypdg/test/test009/cfg.png   | Bin 116862 -> 124696 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 264 +++++++++++++--------
+ 16 files changed, 178 insertions(+), 118 deletions(-)
+
+commit 59c8c254dc44d9ddd6f4231474c9ab5a0553cb2a
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 22 22:10:06 2013 +0900
+
+    The way of getting program elements using Visitor pattern was changed.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |  Bin 33762 -> 37348 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           |  Bin 3476 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      |  Bin 16012 -> 16108 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class |  Bin 3695 -> 3820 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          |  Bin 4616 -> 4631 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/BlockInfo.class |  Bin 315 -> 466 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/ClassInfo.class |  Bin 0 -> 1746 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       |  Bin 3601 -> 3601 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    |  Bin 5011 -> 5803 bytes
+ .../bin/yoshikihigo/tinypdg/pe/MethodInfo.class    |  Bin 2197 -> 3770 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        |  Bin 2461 -> 2391 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class |  Bin 6512 -> 7905 bytes
+ .../bin/yoshikihigo/tinypdg/test/test011/A.class   |  Bin 0 -> 147 bytes
+ .../tinypdg/test/test011/Test011$1.class           |  Bin 0 -> 859 bytes
+ .../yoshikihigo/tinypdg/test/test011/Test011.class |  Bin 0 -> 690 bytes
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.dot   |   16 +
+ .../bin/yoshikihigo/tinypdg/test/test011/cfg.png   |  Bin 0 -> 27799 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 1330 +++++++++++---------
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |   26 +-
+ .../src/yoshikihigo/tinypdg/cfg/edge/CFGEdge.java  |   15 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |    2 +-
+ TinyPDG/src/yoshikihigo/tinypdg/pe/BlockInfo.java  |    5 +
+ TinyPDG/src/yoshikihigo/tinypdg/pe/ClassInfo.java  |   35 +
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |   24 +
+ TinyPDG/src/yoshikihigo/tinypdg/pe/MethodInfo.java |   47 +-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |   75 +-
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.dot   |    2 +-
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.png   |  Bin 52736 -> 53136 bytes
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.dot   |    6 +-
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.png   |  Bin 86931 -> 88736 bytes
+ .../src/yoshikihigo/tinypdg/test/test005/cfg.dot   |    2 +-
+ .../src/yoshikihigo/tinypdg/test/test005/cfg.png   |  Bin 18799 -> 19631 bytes
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.dot   |    4 +-
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.png   |  Bin 55687 -> 61530 bytes
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.dot   |    8 +-
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.png   |  Bin 64437 -> 67080 bytes
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.dot   |    2 +-
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.png   |  Bin 76140 -> 78661 bytes
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.dot   |    8 +-
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.png   |  Bin 116862 -> 124696 bytes
+ .../yoshikihigo/tinypdg/test/test011/Test011.java  |   20 +
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.dot   |   16 +
+ .../src/yoshikihigo/tinypdg/test/test011/cfg.png   |  Bin 0 -> 27799 bytes
+ 43 files changed, 973 insertions(+), 670 deletions(-)
+
+commit b0f92b508f7bcb075757c740b3425d5dc4e851a7
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 22 14:05:34 2013 +0900
+
+    Now, program passes the test010.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3407 -> 3476 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 14745 -> 16012 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class | Bin 3491 -> 3695 bytes
+ .../yoshikihigo/tinypdg/cfg/edge/CFGJumpEdge.class | Bin 0 -> 903 bytes
+ .../yoshikihigo/tinypdg/test/test010/Test010.class | Bin 0 -> 749 bytes
+ .../bin/yoshikihigo/tinypdg/test/test010/cfg.dot   |  42 +++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test010/cfg.png   | Bin 0 -> 142284 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  59 ++++++++++++++++++++-
+ .../src/yoshikihigo/tinypdg/cfg/edge/CFGEdge.java  |   5 ++
+ .../yoshikihigo/tinypdg/cfg/edge/CFGJumpEdge.java  |  20 +++++++
+ .../yoshikihigo/tinypdg/test/test010/Test010.java  |  38 +++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test010/cfg.dot   |  42 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test010/cfg.png   | Bin 0 -> 142284 bytes
+ 13 files changed, 204 insertions(+), 2 deletions(-)
+
+commit e6d51d394ad07314d16de052ef2272e9c2ced46d
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 22 13:16:55 2013 +0900
+
+    Now, program passses the test009.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 33429 -> 33762 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3336 -> 3407 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 14699 -> 14745 bytes
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.dot   |   6 +--
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.png   | Bin 75348 -> 76140 bytes
+ .../yoshikihigo/tinypdg/test/test009/Test009.class | Bin 0 -> 727 bytes
+ .../bin/yoshikihigo/tinypdg/test/test009/cfg.dot   |  37 ++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test009/cfg.png   | Bin 0 -> 116862 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  15 +++++++
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  47 ++++++++++++++-------
+ .../yoshikihigo/tinypdg/test/test009/Test009.java  |  35 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.dot   |  37 ++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test009/cfg.png   | Bin 0 -> 116862 bytes
+ 13 files changed, 158 insertions(+), 19 deletions(-)
+
+commit 0d39310b11140d49c29b493f14d5349223de4b03
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 20:45:55 2013 +0900
+
+    Edges of CFG was changed to be generated by a Factory Method.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3298 -> 3336 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 14773 -> 14699 bytes
+ .../tinypdg/cfg/edge/CFGControlEdge.class          | Bin 1113 -> 1113 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class | Bin 2125 -> 3491 bytes
+ .../tinypdg/cfg/edge/CFGNormalEdge.class           | Bin 917 -> 917 bytes
+ .../bin/yoshikihigo/tinypdg/test/test007/cfg.dot   |  23 +++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test007/cfg.png   | Bin 0 -> 64437 bytes
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.dot   |  27 +++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test008/cfg.png   | Bin 0 -> 75348 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  38 ++++++++++-----------
+ .../tinypdg/cfg/edge/CFGControlEdge.java           |   2 +-
+ .../src/yoshikihigo/tinypdg/cfg/edge/CFGEdge.java  |  18 +++++++++-
+ .../tinypdg/cfg/edge/CFGNormalEdge.java            |   2 +-
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.dot   |  23 +++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test007/cfg.png   | Bin 0 -> 64437 bytes
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.dot   |  27 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test008/cfg.png   | Bin 0 -> 76140 bytes
+ 17 files changed, 137 insertions(+), 23 deletions(-)
+
+commit a58b4921ab51224c4d0ece084045981902cd4cfe
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 20:31:26 2013 +0900
+
+    Now program passes the test007 and test008.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 32937 -> 33429 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3298 -> 3298 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 13822 -> 14773 bytes
+ .../tinypdg/cfg/node/CFGJumpStatementNode.class    | Bin 528 -> 567 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 1528 -> 1993 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2461 -> 2461 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 6046 -> 6512 bytes
+ .../yoshikihigo/tinypdg/test/test007/Test007.class | Bin 0 -> 632 bytes
+ .../yoshikihigo/tinypdg/test/test008/Test008.class | Bin 0 -> 686 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  14 ++++++
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  56 +++++++++++++++++----
+ .../tinypdg/cfg/node/CFGJumpStatementNode.java     |   3 ++
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  15 +++++-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  20 ++++++++
+ .../yoshikihigo/tinypdg/test/test007/Test007.java  |  16 ++++++
+ .../yoshikihigo/tinypdg/test/test008/Test008.java  |  16 ++++++
+ 16 files changed, 130 insertions(+), 10 deletions(-)
+
+commit eec589e908d5147a89fcdcd94fbd1b1f02f71edf
+Merge: 91e1658 955b9e9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 14:52:07 2013 +0900
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 91e1658ef61053bf5d919e656a631680247e48fc
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 14:51:05 2013 +0900
+
+    Test006 was added.
+
+ .../yoshikihigo/tinypdg/test/test006/Test006.class | Bin 0 -> 605 bytes
+ .../bin/yoshikihigo/tinypdg/test/test006/cfg.dot   |  22 +++++++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test006/cfg.png   | Bin 0 -> 55687 bytes
+ .../yoshikihigo/tinypdg/test/test006/Test006.java  |  16 +++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.dot   |  22 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test006/cfg.png   | Bin 0 -> 55687 bytes
+ 6 files changed, 60 insertions(+)
+
+commit 955b9e938e192092e36406e88ebc8b22b8feb91e
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 14:51:05 2013 +0900
+
+    Test006 was added.
+
+ .../bin/yoshikihigo/tinypdg/test/test006/Test006.class  | Bin 0 -> 605 bytes
+ .../src/yoshikihigo/tinypdg/test/test006/Test006.java   |  16 ++++++++++++++++
+ 2 files changed, 16 insertions(+)
+
+commit 52faf7e77093c385600362df31ae4c83668f44b4
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 14:42:32 2013 +0900
+
+    Test005 suite was added.
+
+ TinyPDG/bin/yoshikihigo/tinypdg/test/test005/cfg.dot |  11 +++++++++++
+ TinyPDG/bin/yoshikihigo/tinypdg/test/test005/cfg.png | Bin 0 -> 18799 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/test/test005/cfg.dot |  11 +++++++++++
+ TinyPDG/src/yoshikihigo/tinypdg/test/test005/cfg.png | Bin 0 -> 18799 bytes
+ 4 files changed, 22 insertions(+)
+
+commit ddbbd288942b2675c98a7d27603d50b4035b89d2
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 21 14:41:39 2013 +0900
+
+    Now, program passes the test005.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3298 -> 3298 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 12054 -> 13822 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class | Bin 5913 -> 6706 bytes
+ .../bin/yoshikihigo/tinypdg/test/test002/cfg.dot   |  10 ++
+ .../bin/yoshikihigo/tinypdg/test/test002/cfg.png   | Bin 0 -> 21212 bytes
+ .../yoshikihigo/tinypdg/test/test005/Test005.class | Bin 0 -> 443 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       | 110 +++++++++++++++++----
+ .../src/yoshikihigo/tinypdg/cfg/node/CFGNode.java  |  34 ++++++-
+ .../src/yoshikihigo/tinypdg/test/test002/cfg.dot   |  10 ++
+ .../src/yoshikihigo/tinypdg/test/test002/cfg.png   | Bin 0 -> 21212 bytes
+ .../yoshikihigo/tinypdg/test/test005/Test005.java  |  13 +++
+ 11 files changed, 154 insertions(+), 23 deletions(-)
+
+commit 272cda5aff24ab31241bb4464ac98970618724d9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 18:52:05 2013 +0900
+
+    fogot to add test004
+
+ .../bin/yoshikihigo/tinypdg/test/test004/cfg.dot   |  35 +++++++++++++++++++++
+ .../bin/yoshikihigo/tinypdg/test/test004/cfg.png   | Bin 0 -> 86931 bytes
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.dot   |  35 +++++++++++++++++++++
+ .../src/yoshikihigo/tinypdg/test/test004/cfg.png   | Bin 0 -> 86931 bytes
+ 4 files changed, 70 insertions(+)
+
+commit 83d807199199210d973fd6f53d3e72b2f451c3df
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 18:48:31 2013 +0900
+
+    Now, program passes the test004.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 31502 -> 32937 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 3298 -> 3298 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 12014 -> 12054 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 2913 -> 4616 bytes
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.dot   |   2 +-
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 51114 -> 52736 bytes
+ .../yoshikihigo/tinypdg/test/test004/Test004.class | Bin 0 -> 800 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  94 +++++++++++++++++++--
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |   8 +-
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |  17 +++-
+ .../yoshikihigo/tinypdg/test/test004/Test004.java  |  25 ++++++
+ 11 files changed, 135 insertions(+), 11 deletions(-)
+
+commit 537378d8ca65be8240915f22c75e7d46567fced9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 18:01:26 2013 +0900
+
+    Now, program  passes the test003 for CFG.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 30982 -> 31502 bytes
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.dot   |  13 ++++-
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 17904 -> 51114 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  56 +++++++++++++++++----
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.dot   |  13 ++++-
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 18964 -> 52736 bytes
+ 6 files changed, 67 insertions(+), 15 deletions(-)
+
+commit f41749ab39d53521613b93ca863fb17078f80af9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 16:59:09 2013 +0900
+
+    test003 was added
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 30591 -> 30982 bytes
+ .../yoshikihigo/tinypdg/test/test003/Test003.class | Bin 0 -> 755 bytes
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.dot   |   8 +++++
+ .../bin/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 0 -> 17904 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  36 ++++++++++++++++++---
+ .../yoshikihigo/tinypdg/test/test003/Test003.java  |  11 +++++++
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.dot   |   8 +++++
+ .../src/yoshikihigo/tinypdg/test/test003/cfg.png   | Bin 0 -> 18964 bytes
+ 8 files changed, 58 insertions(+), 5 deletions(-)
+
+commit 8484e49a7ad61d5b3b415a39fc8e09ce3aaf0bf9
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 15:04:32 2013 +0900
+
+    Now, the program passes the test002 on CFG.
+
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 2961 -> 3298 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 11761 -> 12014 bytes
+ .../bin/yoshikihigo/tinypdg/test/test001/cfg.png   | Bin 0 -> 22901 bytes
+ .../yoshikihigo/tinypdg/test/test002/Test002.class | Bin 0 -> 487 bytes
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       |  32 +++++++++++++++++----
+ .../src/yoshikihigo/tinypdg/test/test001/cfg.png   | Bin 0 -> 22901 bytes
+ .../yoshikihigo/tinypdg/test/test002/Test002.java  |  12 ++++++++
+ 7 files changed, 39 insertions(+), 5 deletions(-)
+
+commit 7bc256f7f1426174b5698f3ddce57290df61716a
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Mon May 20 01:42:39 2013 +0900
+
+    Now, program passes the test001.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 30071 -> 30591 bytes
+ .../tinypdg/cfg/CFG$SequentialCFGs.class           | Bin 0 -> 2961 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/cfg/CFG.class      | Bin 0 -> 11761 bytes
+ .../tinypdg/cfg/edge/CFGControlEdge.class          | Bin 0 -> 1113 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/edge/CFGEdge.class | Bin 0 -> 2125 bytes
+ .../tinypdg/cfg/edge/CFGNormalEdge.class           | Bin 0 -> 917 bytes
+ .../tinypdg/cfg/node/CFGBreakStatementNode.class   | Bin 0 -> 490 bytes
+ .../cfg/node/CFGContinueStatementNode.class        | Bin 0 -> 502 bytes
+ .../tinypdg/cfg/node/CFGControlNode.class          | Bin 0 -> 605 bytes
+ .../tinypdg/cfg/node/CFGJumpStatementNode.class    | Bin 0 -> 528 bytes
+ .../bin/yoshikihigo/tinypdg/cfg/node/CFGNode.class | Bin 0 -> 5913 bytes
+ .../tinypdg/cfg/node/CFGNodeFactory.class          | Bin 0 -> 2913 bytes
+ .../tinypdg/cfg/node/CFGNormalNode.class           | Bin 0 -> 562 bytes
+ .../cfg/node/CFGPseudoNode$PseudoElement.class     | Bin 0 -> 484 bytes
+ .../tinypdg/cfg/node/CFGPseudoNode.class           | Bin 0 -> 642 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  | Bin 4939 -> 10177 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 3601 -> 3601 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 5090 -> 5011 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 437 -> 1528 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2325 -> 2461 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 6214 -> 6046 bytes
+ .../pe/VariableAssignmentAndReference.class        | Bin 0 -> 328 bytes
+ .../bin/yoshikihigo/tinypdg/test/test001/cfg.dot   |  10 +
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  52 ++-
+ TinyPDG/src/yoshikihigo/tinypdg/cfg/CFG.java       | 430 +++++++++++++++++++++
+ .../tinypdg/cfg/edge/CFGControlEdge.java           |  24 ++
+ .../src/yoshikihigo/tinypdg/cfg/edge/CFGEdge.java  |  62 +++
+ .../tinypdg/cfg/edge/CFGNormalEdge.java            |  20 +
+ .../tinypdg/cfg/node/CFGBreakStatementNode.java    |  10 +
+ .../tinypdg/cfg/node/CFGContinueStatementNode.java |  10 +
+ .../tinypdg/cfg/node/CFGControlNode.java           |  10 +
+ .../tinypdg/cfg/node/CFGJumpStatementNode.java     |  10 +
+ .../src/yoshikihigo/tinypdg/cfg/node/CFGNode.java  | 154 ++++++++
+ .../tinypdg/cfg/node/CFGNodeFactory.java           |  59 +++
+ .../tinypdg/cfg/node/CFGNormalNode.java            |  10 +
+ .../tinypdg/cfg/node/CFGPseudoNode.java            |  17 +
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   | 379 +++++++++---------
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  15 +-
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  33 ++
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  19 +-
+ .../tinypdg/pe/VariableAssignmentAndReference.java |  10 +
+ .../src/yoshikihigo/tinypdg/test/test001/cfg.dot   |  10 +
+ 42 files changed, 1142 insertions(+), 202 deletions(-)
+
+commit 6c8e02cc708caf3f997165b94cf6fe7a37d6e7ce
+Merge: a64abed ae61dcb
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 16 18:34:52 2013 +0900
+
+    Merge remote-tracking branch 'origin/master'
+
+commit a64abedd44d6cd9b1377d38718369f3b59b1e195
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 16 18:33:50 2013 +0900
+
+    prepared the first test case and arranged for passing it.
+
+ TinyPDG/.classpath                                 |   25 +-
+ TinyPDG/.settings/org.eclipse.core.resources.prefs |    2 +
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |  Bin 27992 -> 30071 bytes
+ .../bin/yoshikihigo/tinypdg/graphviz/Writer.class  |  Bin 0 -> 4939 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       |  Bin 3490 -> 3601 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    |  Bin 5023 -> 5090 bytes
+ .../yoshikihigo/tinypdg/test/test001/Test001.class |  Bin 0 -> 453 bytes
+ .../bin/yoshikihigo/tinypdg/test/test001/cfg.dot   |    2 +
+ TinyPDG/lib/commons-cli-1.2/LICENSE.txt            |  202 +++
+ TinyPDG/lib/commons-cli-1.2/NOTICE.txt             |    5 +
+ TinyPDG/lib/commons-cli-1.2/RELEASE-NOTES.txt      |   73 +
+ .../commons-cli-1.2/apidocs/allclasses-frame.html  |   65 +
+ .../apidocs/allclasses-noframe.html                |   65 +
+ .../commons-cli-1.2/apidocs/constant-values.html   |  229 +++
+ .../commons-cli-1.2/apidocs/deprecated-list.html   |  219 +++
+ TinyPDG/lib/commons-cli-1.2/apidocs/help-doc.html  |  212 +++
+ TinyPDG/lib/commons-cli-1.2/apidocs/index-all.html |  917 ++++++++++++
+ TinyPDG/lib/commons-cli-1.2/apidocs/index.html     |   37 +
+ TinyPDG/lib/commons-cli-1.2/apidocs/options        |   24 +
+ .../commons/cli/AlreadySelectedException.html      |  333 +++++
+ .../org/apache/commons/cli/BasicParser.html        |  306 ++++
+ .../org/apache/commons/cli/CommandLine.html        |  642 ++++++++
+ .../org/apache/commons/cli/CommandLineParser.html  |  257 ++++
+ .../apidocs/org/apache/commons/cli/GnuParser.html  |  315 ++++
+ .../org/apache/commons/cli/HelpFormatter.html      | 1543 ++++++++++++++++++++
+ .../commons/cli/MissingArgumentException.html      |  309 ++++
+ .../apache/commons/cli/MissingOptionException.html |  306 ++++
+ .../apidocs/org/apache/commons/cli/Option.html     | 1225 ++++++++++++++++
+ .../org/apache/commons/cli/OptionBuilder.html      |  655 +++++++++
+ .../org/apache/commons/cli/OptionGroup.html        |  437 ++++++
+ .../apidocs/org/apache/commons/cli/Options.html    |  515 +++++++
+ .../org/apache/commons/cli/ParseException.html     |  253 ++++
+ .../apidocs/org/apache/commons/cli/Parser.html     |  645 ++++++++
+ .../apache/commons/cli/PatternOptionBuilder.html   |  527 +++++++
+ .../org/apache/commons/cli/PosixParser.html        |  375 +++++
+ .../org/apache/commons/cli/TypeHandler.html        |  480 ++++++
+ .../commons/cli/UnrecognizedOptionException.html   |  309 ++++
+ .../cli/class-use/AlreadySelectedException.html    |  162 ++
+ .../apache/commons/cli/class-use/BasicParser.html  |  139 ++
+ .../apache/commons/cli/class-use/CommandLine.html  |  232 +++
+ .../commons/cli/class-use/CommandLineParser.html   |  189 +++
+ .../apache/commons/cli/class-use/GnuParser.html    |  139 ++
+ .../commons/cli/class-use/HelpFormatter.html       |  139 ++
+ .../cli/class-use/MissingArgumentException.html    |  139 ++
+ .../cli/class-use/MissingOptionException.html      |  163 +++
+ .../org/apache/commons/cli/class-use/Option.html   |  287 ++++
+ .../commons/cli/class-use/OptionBuilder.html       |  279 ++++
+ .../apache/commons/cli/class-use/OptionGroup.html  |  210 +++
+ .../org/apache/commons/cli/class-use/Options.html  |  477 ++++++
+ .../commons/cli/class-use/ParseException.html      |  364 +++++
+ .../org/apache/commons/cli/class-use/Parser.html   |  181 +++
+ .../cli/class-use/PatternOptionBuilder.html        |  139 ++
+ .../apache/commons/cli/class-use/PosixParser.html  |  139 ++
+ .../apache/commons/cli/class-use/TypeHandler.html  |  139 ++
+ .../cli/class-use/UnrecognizedOptionException.html |  139 ++
+ .../org/apache/commons/cli/package-frame.html      |   85 ++
+ .../org/apache/commons/cli/package-summary.html    |  265 ++++
+ .../org/apache/commons/cli/package-tree.html       |  164 +++
+ .../org/apache/commons/cli/package-use.html        |  209 +++
+ .../lib/commons-cli-1.2/apidocs/overview-tree.html |  166 +++
+ TinyPDG/lib/commons-cli-1.2/apidocs/package-list   |    1 +
+ TinyPDG/lib/commons-cli-1.2/apidocs/packages       |    1 +
+ .../commons-cli-1.2/apidocs/resources/inherit.gif  |  Bin 0 -> 57 bytes
+ .../commons-cli-1.2/apidocs/serialized-form.html   |  578 ++++++++
+ .../commons/cli/AlreadySelectedException.html      |  149 ++
+ .../org/apache/commons/cli/BasicParser.html        |  113 ++
+ .../org/apache/commons/cli/CommandLine.html        |  451 ++++++
+ .../org/apache/commons/cli/CommandLineParser.html  |  160 ++
+ .../src-html/org/apache/commons/cli/GnuParser.html |  179 +++
+ .../org/apache/commons/cli/HelpFormatter.html      | 1050 +++++++++++++
+ .../commons/cli/MissingArgumentException.html      |  133 ++
+ .../apache/commons/cli/MissingOptionException.html |  159 ++
+ .../src-html/org/apache/commons/cli/Option.html    |  740 ++++++++++
+ .../org/apache/commons/cli/OptionBuilder.html      |  435 ++++++
+ .../org/apache/commons/cli/OptionGroup.html        |  234 +++
+ .../src-html/org/apache/commons/cli/Options.html   |  325 +++++
+ .../org/apache/commons/cli/ParseException.html     |  104 ++
+ .../src-html/org/apache/commons/cli/Parser.html    |  465 ++++++
+ .../apache/commons/cli/PatternOptionBuilder.html   |  267 ++++
+ .../org/apache/commons/cli/PosixParser.html        |  342 +++++
+ .../org/apache/commons/cli/TypeHandler.html        |  312 ++++
+ .../commons/cli/UnrecognizedOptionException.html   |  133 ++
+ TinyPDG/lib/commons-cli-1.2/apidocs/stylesheet.css |   29 +
+ .../commons-cli-1.2/commons-cli-1.2-javadoc.jar    |  Bin 0 -> 214274 bytes
+ .../commons-cli-1.2/commons-cli-1.2-sources.jar    |  Bin 0 -> 48726 bytes
+ TinyPDG/lib/commons-cli-1.2/commons-cli-1.2.jar    |  Bin 0 -> 41123 bytes
+ ...e.contenttype.source_3.4.200.v20120523-2004.jar |  Bin 0 -> 78043 bytes
+ ...pse.core.contenttype_3.4.200.v20120523-2004.jar |  Bin 0 -> 93175 bytes
+ ...e.core.jobs.source_3.5.300.v20120912-155018.jar |  Bin 0 -> 94183 bytes
+ ....eclipse.core.jobs_3.5.300.v20120912-155018.jar |  Bin 0 -> 92510 bytes
+ ...ore.resources.source_3.8.1.v20121114-124432.jar |  Bin 0 -> 777923 bytes
+ ...lipse.core.resources_3.8.1.v20121114-124432.jar |  Bin 0 -> 810227 bytes
+ ....core.runtime.source_3.8.0.v20120912-155025.jar |  Bin 0 -> 91402 bytes
+ ...eclipse.core.runtime_3.8.0.v20120912-155025.jar |  Bin 0 -> 75324 bytes
+ ...quinox.common.source_3.6.100.v20120522-1841.jar |  Bin 0 -> 117861 bytes
+ ...lipse.equinox.common_3.6.100.v20120522-1841.jar |  Bin 0 -> 106765 bytes
+ ...x.preferences.source_3.5.1.v20121031-182809.jar |  Bin 0 -> 110859 bytes
+ ....equinox.preferences_3.5.1.v20121031-182809.jar |  Bin 0 -> 126754 bytes
+ ...osgi.services.source_3.3.100.v20120522-1822.jar |  Bin 0 -> 181132 bytes
+ ...clipse.osgi.services_3.3.100.v20120522-1822.jar |  Bin 0 -> 83084 bytes
+ ....eclipse.osgi.source_3.8.2.v20130124-134944.jar |  Bin 0 -> 1160586 bytes
+ ...e.osgi.util.source_3.2.300.v20120913-144807.jar |  Bin 0 -> 33780 bytes
+ ....eclipse.osgi.util_3.2.300.v20120913-144807.jar |  Bin 0 -> 24979 bytes
+ .../org.eclipse.osgi_3.8.2.v20130124-134944.jar    |  Bin 0 -> 1397587 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |   71 +-
+ .../src/yoshikihigo/tinypdg/graphviz/Writer.java   |  334 +++++
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |    3 +-
+ .../yoshikihigo/tinypdg/test/test001/Test001.java  |   11 +
+ .../src/yoshikihigo/tinypdg/test/test001/cfg.dot   |    2 +
+ 109 files changed, 22829 insertions(+), 6 deletions(-)
+
+commit ae61dcbfd9c352632f304a199d78089865b5828d
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 16 18:33:50 2013 +0900
+
+    prepared the first test case and arranged for passing it.
+
+ TinyPDG/.classpath                                 |  25 +++++++-
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 27992 -> 30071 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 3490 -> 3601 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 5023 -> 5090 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java |  71 ++++++++++++++++++++-
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |   3 +-
+ 6 files changed, 93 insertions(+), 6 deletions(-)
+
+commit f85d9b7cbb45fccc1bb34d2498e0f4103ef21175
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Thu May 16 01:43:21 2013 +0900
+
+    Some APIs were arranged, again.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 27220 -> 27992 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 2976 -> 3490 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 1859 -> 5023 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2325 -> 2325 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 4440 -> 6214 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 176 +++++++++------------
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  60 ++++++-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  80 ++++++++++
+ 8 files changed, 213 insertions(+), 103 deletions(-)
+
+commit c739dbfd46f79a8e38f883aeb988e08f4c9f8359
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 15 19:01:05 2013 +0900
+
+    Some APIs were arranged.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 18588 -> 27220 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 1974 -> 2976 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 1859 -> 1859 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 2251 -> 2325 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 3488 -> 4440 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 837 ++++++++-------------
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  15 +-
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  |  44 +-
+ 8 files changed, 382 insertions(+), 514 deletions(-)
+
+commit ebf22acf1acba4bb1eafe14cfc0d7e8d995909ba
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Wed May 15 12:42:53 2013 +0900
+
+    Some base resources were added, again.
+
+ .../tinypdg/ast/TinyPDGASTVisitor.class            | Bin 11907 -> 18588 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/BlockInfo.class | Bin 0 -> 315 bytes
+ .../tinypdg/pe/ExpressionInfo$CATEGORY.class       | Bin 0 -> 1974 bytes
+ .../yoshikihigo/tinypdg/pe/ExpressionInfo.class    | Bin 0 -> 1859 bytes
+ .../bin/yoshikihigo/tinypdg/pe/MethodInfo.class    | Bin 1542 -> 2197 bytes
+ .../tinypdg/pe/ProgramElementInfo.class            | Bin 0 -> 437 bytes
+ .../tinypdg/pe/StatementInfo$CATEGORY.class        | Bin 0 -> 2251 bytes
+ .../bin/yoshikihigo/tinypdg/pe/StatementInfo.class | Bin 0 -> 3488 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/TypeInfo.class  | Bin 388 -> 465 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 256 ++++++++-------------
+ TinyPDG/src/yoshikihigo/tinypdg/pe/BlockInfo.java  |  10 +
+ .../src/yoshikihigo/tinypdg/pe/ExpressionInfo.java |  48 ++++
+ TinyPDG/src/yoshikihigo/tinypdg/pe/MethodInfo.java |  23 +-
+ .../yoshikihigo/tinypdg/pe/ProgramElementInfo.java |  12 +
+ .../src/yoshikihigo/tinypdg/pe/StatementInfo.java  | 102 ++++++++
+ TinyPDG/src/yoshikihigo/tinypdg/pe/TypeInfo.java   |   5 +-
+ 16 files changed, 287 insertions(+), 169 deletions(-)
+
+commit b1d41017b620c0c8d07913e45c6e249409bacb13
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 14 20:52:41 2013 +0900
+
+    Some base resources were added.
+
+ TinyPDG/.classpath                                 |   61 +
+ TinyPDG/.project                                   |   17 +
+ TinyPDG/.settings/org.eclipse.jdt.core.prefs       |   11 +
+ .../tinypdg/ast/TinyPDGASTVisitor.class            |  Bin 0 -> 11907 bytes
+ .../bin/yoshikihigo/tinypdg/pe/MethodInfo.class    |  Bin 0 -> 1542 bytes
+ TinyPDG/bin/yoshikihigo/tinypdg/pe/TypeInfo.class  |  Bin 0 -> 388 bytes
+ .../tinypdg/pe/VariableInfo$CATEGORY.class         |  Bin 0 -> 1243 bytes
+ .../bin/yoshikihigo/tinypdg/pe/VariableInfo.class  |  Bin 0 -> 748 bytes
+ .../lib/org.eclipse.jdt.source-4.2.2/artifacts.jar |  Bin 0 -> 3202 bytes
+ ...2.v20130116-090414-8-8nFu3FNOfwKLRuqgXKIy9z0I83 |  Bin 0 -> 8902 bytes
+ .../lib/org.eclipse.jdt.source-4.2.2/content.jar   |  Bin 0 -> 12868 bytes
+ ...0130116-090414-8-8nFu3FNOfwKLRuqgXKIy9z0I83.jar |  Bin 0 -> 31075 bytes
+ ...0130116-090414-8-8nFu3FNOfwKLRuqgXKIy9z0I83.jar |  Bin 0 -> 31202 bytes
+ ...ant.launching.source_1.0.200.v20120530-1204.jar |  Bin 0 -> 122457 bytes
+ ...clipse.ant.launching_1.0.200.v20120530-1204.jar |  Bin 0 -> 151454 bytes
+ ...ipse.ant.ui.source_3.5.301.v20121210-210948.jar |  Bin 0 -> 527532 bytes
+ ...org.eclipse.ant.ui_3.5.301.v20121210-210948.jar |  Bin 0 -> 965877 bytes
+ ...dt.annotation.source_1.0.1.v20130111-135246.jar |  Bin 0 -> 11540 bytes
+ ...lipse.jdt.annotation_1.0.1.v20130111-135246.jar |  Bin 0 -> 14723 bytes
+ ....jdt.apt.core.source_3.3.500.v20120522-1651.jar |  Bin 0 -> 347020 bytes
+ ...eclipse.jdt.apt.core_3.3.500.v20120522-1651.jar |  Bin 0 -> 365294 bytes
+ ...luggable.core.source_1.0.400.v20120522-1651.jar |  Bin 0 -> 29385 bytes
+ ...t.apt.pluggable.core_1.0.400.v20120522-1651.jar |  Bin 0 -> 33695 bytes
+ ...se.jdt.apt.ui.source_3.3.300.v20120522-1651.jar |  Bin 0 -> 43389 bytes
+ ...g.eclipse.jdt.apt.ui_3.3.300.v20120522-1651.jar |  Bin 0 -> 69296 bytes
+ ...ompiler.apt.source_1.0.600.v20130116-050536.jar |  Bin 0 -> 114269 bytes
+ ...e.jdt.compiler.apt_1.0.600.v20130116-050536.jar |  Bin 0 -> 155091 bytes
+ ...mpiler.tool.source_1.0.200.v20130116-050536.jar |  Bin 0 -> 32943 bytes
+ ....jdt.compiler.tool_1.0.200.v20130116-050536.jar |  Bin 0 -> 58471 bytes
+ ...re.manipulation.source_1.5.0.v20120523-1543.jar |  Bin 0 -> 96605 bytes
+ ....jdt.core.manipulation_1.5.0.v20120523-1543.jar |  Bin 0 -> 87746 bytes
+ ...ipse.jdt.core.source_3.8.3.v20130121-145325.jar |  Bin 0 -> 3883719 bytes
+ ...org.eclipse.jdt.core_3.8.3.v20130121-145325.jar |  Bin 0 -> 4815459 bytes
+ ...e.jdt.debug.source_3.7.101.v20120913-153601.jar |  Bin 0 -> 789134 bytes
+ ....jdt.debug.ui.source_3.6.100.v20120530-1425.jar |  Bin 0 -> 777799 bytes
+ ...eclipse.jdt.debug.ui_3.6.100.v20120530-1425.jar |  Bin 0 -> 1385258 bytes
+ ....eclipse.jdt.debug_3.7.101.v20120913-153601.jar |  Bin 0 -> 850289 bytes
+ ....eclipse.jdt.doc.isv_3.8.2.v20130121-200410.jar |  Bin 0 -> 7002764 bytes
+ ...eclipse.jdt.doc.user_3.8.2.v20130121-200410.jar |  Bin 0 -> 7951914 bytes
+ ...dt.junit.core.source_3.7.100.v20120523-1257.jar |  Bin 0 -> 98593 bytes
+ ...lipse.jdt.junit.core_3.7.100.v20120523-1257.jar |  Bin 0 -> 146209 bytes
+ ...nit.runtime.source_3.4.301.v20120914-131016.jar |  Bin 0 -> 43219 bytes
+ ....jdt.junit.runtime_3.4.301.v20120914-131016.jar |  Bin 0 -> 53466 bytes
+ ...pse.jdt.junit.source_3.7.100.v20120523-1543.jar |  Bin 0 -> 179109 bytes
+ ...unit4.runtime.source_1.1.200.v20120523-1257.jar |  Bin 0 -> 16090 bytes
+ ...e.jdt.junit4.runtime_1.1.200.v20120523-1257.jar |  Bin 0 -> 19636 bytes
+ ...rg.eclipse.jdt.junit_3.7.100.v20120523-1543.jar |  Bin 0 -> 422735 bytes
+ ...nching.macosx.source_3.2.100.v20120523-1953.jar |  Bin 0 -> 16073 bytes
+ ...jdt.launching.macosx_3.2.100.v20120523-1953.jar |  Bin 0 -> 19400 bytes
+ ...t.launching.source_3.6.101.v20130111-183046.jar |  Bin 0 -> 277015 bytes
+ ...g.ui.macosx.source_1.0.100.v20120913-154241.jar |  Bin 0 -> 26462 bytes
+ ...aunching.ui.macosx_1.0.100.v20120913-154241.jar |  Bin 0 -> 56918 bytes
+ ...ipse.jdt.launching_3.6.101.v20130111-183046.jar |  Bin 0 -> 316406 bytes
+ .../org.eclipse.jdt.source_3.8.1.v201302041200.jar |  Bin 0 -> 13650 bytes
+ ...clipse.jdt.ui.source_3.8.2.v20130107-165834.jar |  Bin 0 -> 5565076 bytes
+ .../org.eclipse.jdt.ui_3.8.2.v20130107-165834.jar  |  Bin 0 -> 10337580 bytes
+ .../org.eclipse.jdt_3.8.1.v201302041200.jar        |  Bin 0 -> 42834 bytes
+ ....hamcrest.core.source_1.1.0.v20090501071000.jar |  Bin 0 -> 23075 bytes
+ .../org.hamcrest.core_1.1.0.v20090501071000.jar    |  Bin 0 -> 27827 bytes
+ ...rg.junit.source_3.8.2.v3_8_2_v20100427-1100.jar |  Bin 0 -> 74350 bytes
+ ....junit.source_4.10.0.v4_10_0_v20120426-0900.jar |  Bin 0 -> 173522 bytes
+ .../plugins/org.junit4_4.8.1.v20120523-1257.jar    |  Bin 0 -> 7259 bytes
+ .../org.junit_3.8.2.v3_8_2_v20100427-1100.jar      |  Bin 0 -> 119475 bytes
+ .../org.junit_4.10.0.v4_10_0_v20120426-0900.jar    |  Bin 0 -> 216863 bytes
+ .../yoshikihigo/tinypdg/ast/TinyPDGASTVisitor.java | 1410 ++++++++++++++++++++
+ TinyPDG/src/yoshikihigo/tinypdg/pe/MethodInfo.java |   32 +
+ TinyPDG/src/yoshikihigo/tinypdg/pe/TypeInfo.java   |   10 +
+ .../src/yoshikihigo/tinypdg/pe/VariableInfo.java   |   19 +
+ 68 files changed, 1560 insertions(+)
+
+commit 1723b10c98245e68930fbc5ae4a81845b56fed59
+Author: YoshikiHigo <yoshiki.higo@gmail.com>
+Date:   Tue May 14 00:59:44 2013 -0700
+
+    Initial commit
+
+ README.md | 4 ++++
+ 1 file changed, 4 insertions(+)
